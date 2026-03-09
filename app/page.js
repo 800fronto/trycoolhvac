@@ -7,62 +7,123 @@ export default function Home() {
     <div className="bg-white">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative bg-navy-900 text-white">
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-900/95 via-navy-900/80 to-navy-900/40"></div>
-        <div className="relative max-w-7xl mx-auto px-6 py-20 md:py-28">
-          <p className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-2">
-            HVAC: Heating &amp; Air Conditioning
-          </p>
-          <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight max-w-2xl">
-            Reliable service — upfront pricing, no surprises
-          </h1>
-          <p className="text-lg text-gray-300 max-w-xl mb-8 leading-relaxed">
-            At TryCool HVAC, we provide expert residential and commercial heating and air conditioning services across the DC metro area. Our certified technicians are available when you need them most.
-          </p>
-          <div className="flex items-center space-x-6">
-            <div className="flex items-center space-x-3">
-              <div className="flex text-yellow-400 text-lg">★★★★★</div>
-              <div>
-                <p className="font-bold text-xl">5/5</p>
-                <p className="text-sm text-gray-300">Customer Rating</p>
+      {/* Hero Section — enhanced with layered gradient and trust signals */}
+      <section className="relative bg-navy-900 text-white overflow-hidden">
+        {/* Animated gradient layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-blue-800/30 to-navy-900"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-800/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-red-600/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
+
+        <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-6">
+              <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+              <span className="text-sm font-medium text-gray-200">Serving the DC Metro Area Since 2009</span>
+            </div>
+
+            <h1 className="text-4xl md:text-6xl font-black mb-5 leading-[1.1] tracking-tight">
+              Reliable service —<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">upfront pricing, no surprises</span>
+            </h1>
+
+            <p className="text-lg md:text-xl text-gray-300 max-w-xl mb-10 leading-relaxed">
+              Expert residential and commercial HVAC services across the DC metro area. Our certified technicians are available when you need them most.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-12">
+              <a href="/contact" className="bg-red-600 hover:bg-red-700 text-white px-8 py-3.5 rounded-lg font-bold text-base transition shadow-lg shadow-red-600/25 flex items-center space-x-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                <span>Schedule Service</span>
+              </a>
+              <a href="tel:2025551234" className="text-white font-bold text-xl hover:text-red-400 transition flex items-center space-x-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                </svg>
+                <span>(202) 555-1234</span>
+              </a>
+            </div>
+
+            {/* Trust signals row */}
+            <div className="flex flex-wrap items-center gap-6 border-t border-white/10 pt-6">
+              <div className="flex items-center space-x-2">
+                <div className="flex text-yellow-400 text-sm">★★★★★</div>
+                <span className="text-sm text-gray-300"><span className="text-white font-bold">4.9/5</span> (500+ reviews)</span>
+              </div>
+              <div className="w-px h-5 bg-white/20 hidden sm:block"></div>
+              <div className="flex items-center space-x-2">
+                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span className="text-sm text-gray-300">Licensed & Insured</span>
+              </div>
+              <div className="w-px h-5 bg-white/20 hidden sm:block"></div>
+              <div className="flex items-center space-x-2">
+                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span className="text-sm text-gray-300">Same-Day Service</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Promo Banner */}
-      <div className="bg-blue-800 text-white py-3 px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-center space-x-4">
-          <span className="font-semibold text-lg">Save on your next HVAC service!</span>
-          <a href="/contact" className="underline font-bold hover:text-gray-200 transition">Learn More</a>
+      {/* Stats Bar */}
+      <section className="bg-blue-800 text-white">
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {[
+              { number: "15+", label: "Years of Experience" },
+              { number: "10,000+", label: "Homes Served" },
+              { number: "24/7", label: "Emergency Service" },
+              { number: "100%", label: "Satisfaction Guarantee" },
+            ].map((stat, i) => (
+              <div key={i}>
+                <p className="text-2xl md:text-3xl font-black">{stat.number}</p>
+                <p className="text-sm text-blue-200 font-medium">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Seasonal Promo Banner */}
+      <div className="bg-gradient-to-r from-red-600 to-red-700 text-white py-4 px-6">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+          <div className="flex items-center space-x-2">
+            <span className="bg-white text-red-600 text-xs font-black px-2 py-0.5 rounded uppercase tracking-wider">Spring Special</span>
+            <span className="font-bold text-lg">AC Tune-Up — $79</span>
+          </div>
+          <span className="hidden sm:inline text-red-200">|</span>
+          <span className="text-red-100 text-sm">Get your system ready for summer. Limited time offer.</span>
+          <a href="/contact" className="bg-white text-red-600 font-bold text-sm px-5 py-2 rounded hover:bg-red-50 transition flex-shrink-0">
+            Book Now
+          </a>
         </div>
       </div>
 
       {/* Schedule Online Form */}
-      <section className="max-w-5xl mx-auto -mt-0 px-6 py-12">
-        <div className="bg-white rounded-lg shadow-xl p-8 border border-gray-100">
-          <div className="flex space-x-4 mb-6">
-            <button className="px-4 py-2 bg-blue-800 text-white rounded font-semibold text-sm">Residential</button>
-            <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded font-semibold text-sm hover:bg-gray-200 transition">Commercial</button>
+      <section className="max-w-5xl mx-auto px-6 py-14">
+        <div className="bg-white rounded-xl shadow-xl p-8 border border-gray-100">
+          <div className="flex space-x-3 mb-6">
+            <button className="px-5 py-2.5 bg-blue-800 text-white rounded-lg font-semibold text-sm shadow-sm">Residential</button>
+            <button className="px-5 py-2.5 bg-gray-100 text-gray-600 rounded-lg font-semibold text-sm hover:bg-gray-200 transition">Commercial</button>
           </div>
-          <h2 className="text-2xl font-bold text-blue-800 mb-6">Schedule Online</h2>
+          <h2 className="text-2xl font-bold text-navy-900 mb-2">Schedule Online</h2>
+          <p className="text-gray-500 text-sm mb-6">Fill out the form below and we will contact you within 30 minutes.</p>
           <form className="grid md:grid-cols-4 gap-4 items-end">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">Full Name*</label>
-              <input className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none" placeholder="First & Last Name" />
+              <input className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none" placeholder="First & Last Name" />
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">Email*</label>
-              <input className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none" placeholder="email@domain.com" type="email" />
+              <input className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none" placeholder="email@domain.com" type="email" />
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">Phone Number*</label>
-              <input className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none" placeholder="(202) 555-1234" type="tel" />
+              <input className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none" placeholder="(202) 555-1234" type="tel" />
             </div>
             <div>
-              <button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white py-2.5 px-6 rounded font-semibold text-sm transition">
+              <button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white py-2.5 px-6 rounded-lg font-semibold text-sm transition shadow-sm">
                 Request A Call
               </button>
             </div>
@@ -70,27 +131,96 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Customer Reviews */}
+      {/* How It Works */}
       <section className="bg-gray-50 py-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-black text-center text-navy-900 mb-10">Customer Reviews</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="text-center mb-12">
+            <p className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">Simple Process</p>
+            <h2 className="text-3xl font-black text-navy-900">How It Works</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 relative">
+            {/* Connector line (desktop) */}
+            <div className="hidden md:block absolute top-12 left-[20%] right-[20%] h-0.5 bg-gray-200"></div>
+
             {[
-              { text: "TryCool was fantastic. They arrived same day and fixed our AC unit quickly. Very professional and fair pricing.", name: "Sarah M." },
-              { text: "Our furnace stopped working on a cold night. TryCool had a technician out within 2 hours. Excellent service and communication.", name: "James R." },
-              { text: "We had a full HVAC system installed. The team was knowledgeable, clean, and finished ahead of schedule. Highly recommend!", name: "Patricia L." },
-            ].map((review, i) => (
-              <div key={i} className="bg-white rounded-lg shadow p-6 relative">
-                <div className="flex justify-center mb-4">
-                  <div className="w-14 h-14 bg-blue-800 rounded-full flex items-center justify-center">
-                    <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
+              {
+                step: "1",
+                title: "Schedule a Call",
+                desc: "Call us or fill out our online form. We will confirm your appointment within 30 minutes.",
+                icon: (
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                  </svg>
+                ),
+              },
+              {
+                step: "2",
+                title: "We Diagnose",
+                desc: "A certified technician arrives on time, inspects your system, and explains the issue clearly.",
+                icon: (
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+                  </svg>
+                ),
+              },
+              {
+                step: "3",
+                title: "Problem Solved",
+                desc: "We fix the issue right the first time — upfront pricing, no surprises, satisfaction guaranteed.",
+                icon: (
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                ),
+              },
+            ].map((item, i) => (
+              <div key={i} className="relative text-center">
+                <div className="flex justify-center mb-5">
+                  <div className="w-24 h-24 bg-white rounded-2xl shadow-lg flex items-center justify-center text-blue-800 border-2 border-gray-100 relative">
+                    {item.icon}
+                    <span className="absolute -top-2 -right-2 w-7 h-7 bg-red-600 text-white rounded-full text-xs font-black flex items-center justify-center shadow">
+                      {item.step}
+                    </span>
                   </div>
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">{review.text}</p>
-                <p className="font-semibold text-navy-900">{review.name}</p>
-                <div className="flex text-yellow-400 mt-1">★★★★★</div>
+                <h3 className="font-bold text-navy-900 text-lg mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed max-w-xs mx-auto">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Customer Reviews — enhanced with quotation marks and verified badges */}
+      <section className="py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">Trusted by Homeowners</p>
+            <h2 className="text-3xl font-black text-navy-900">What Our Customers Say</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { text: "TryCool was fantastic. They arrived same day and fixed our AC unit quickly. Very professional and fair pricing.", name: "Sarah M.", location: "Washington, DC", source: "Google" },
+              { text: "Our furnace stopped working on a cold night. TryCool had a technician out within 2 hours. Excellent service and communication.", name: "James R.", location: "Bethesda, MD", source: "Yelp" },
+              { text: "We had a full HVAC system installed. The team was knowledgeable, clean, and finished ahead of schedule. Highly recommend!", name: "Patricia L.", location: "Arlington, VA", source: "Google" },
+            ].map((review, i) => (
+              <div key={i} className="bg-white rounded-xl border border-gray-200 p-7 relative hover:shadow-lg transition group">
+                {/* Quote mark */}
+                <div className="text-5xl text-blue-800/10 font-serif leading-none absolute top-4 right-6 select-none">&ldquo;</div>
+
+                <div className="flex text-yellow-400 mb-4 text-sm">★★★★★</div>
+
+                <p className="text-gray-700 text-sm leading-relaxed mb-5 relative z-10">&ldquo;{review.text}&rdquo;</p>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-bold text-navy-900 text-sm">{review.name}</p>
+                    <p className="text-gray-400 text-xs">{review.location}</p>
+                  </div>
+                  <span className="text-xs font-semibold text-gray-400 bg-gray-100 px-2.5 py-1 rounded-full">
+                    {review.source} Review
+                  </span>
+                </div>
               </div>
             ))}
           </div>
@@ -98,12 +228,15 @@ export default function Home() {
       </section>
 
       {/* Why Choose TryCool */}
-      <section className="py-16 px-6">
+      <section className="bg-gray-50 py-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-black text-center text-navy-900 mb-4">The TryCool Advantage</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            From tune-ups and maintenance to repairs and full system replacement, we provide services that keep your home or business at the perfect temperature.
-          </p>
+          <div className="text-center mb-12">
+            <p className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">Why Choose Us</p>
+            <h2 className="text-3xl font-black text-navy-900 mb-4">The TryCool Advantage</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              From tune-ups and maintenance to repairs and full system replacement, we provide services that keep your home or business at the perfect temperature.
+            </p>
+          </div>
           <div className="grid md:grid-cols-4 gap-6">
             {[
               {
@@ -143,9 +276,9 @@ export default function Home() {
                 ),
               },
             ].map((item, i) => (
-              <div key={i} className="bg-white rounded-lg shadow p-6 text-center hover:shadow-lg transition">
+              <div key={i} className="bg-white rounded-xl shadow-sm p-6 text-center hover:shadow-lg transition border border-gray-100">
                 <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white">
+                  <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center text-white shadow-sm">
                     {item.icon}
                   </div>
                 </div>
@@ -158,27 +291,38 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="bg-gray-50 py-16 px-6">
+      <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-black text-navy-900 mb-10">HVAC Services We Can Help With</h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
+            <div>
+              <p className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">What We Do</p>
+              <h2 className="text-3xl font-black text-navy-900">HVAC Services We Can Help With</h2>
+            </div>
+            <a href="/services" className="text-blue-800 font-semibold text-sm hover:underline mt-3 md:mt-0">
+              View All Services &rarr;
+            </a>
+          </div>
+          <div className="grid md:grid-cols-2 gap-5">
             {[
               { title: "Air Conditioning Repair & Replacement", desc: "Expert AC repair and replacement services to ensure you stay cool and comfortable all summer long." },
               { title: "Heater Repair & Replacement", desc: "Fast, reliable heater repair and furnace replacement to keep your home warm through the winter." },
               { title: "HVAC Installation", desc: "Full system installation and upgrades to high-efficiency heating and cooling systems." },
               { title: "Maintenance & Tune-Ups", desc: "Regular maintenance plans to keep your system running efficiently and prevent costly breakdowns." },
             ].map((service, i) => (
-              <div key={i} className="bg-white rounded-lg border-l-4 border-red-600 p-6 shadow-sm hover:shadow-md transition">
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <div key={i} className="bg-white rounded-xl border border-gray-200 border-l-4 border-l-red-600 p-6 hover:shadow-md transition group">
+                <div className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-red-600/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-red-600 transition">
+                    <svg className="w-4 h-4 text-red-600 group-hover:text-white transition" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                     </svg>
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <h3 className="font-bold text-navy-900 text-lg mb-1">{service.title}</h3>
                     <p className="text-gray-600 text-sm">{service.desc}</p>
                   </div>
+                  <svg className="w-5 h-5 text-gray-300 group-hover:text-red-600 transition flex-shrink-0 mt-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
+                  </svg>
                 </div>
               </div>
             ))}
@@ -187,18 +331,27 @@ export default function Home() {
       </section>
 
       {/* CTA Banner */}
-      <section className="bg-red-600 py-10 px-6">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between">
-          <div className="text-white text-center md:text-left mb-4 md:mb-0">
-            <h3 className="text-2xl font-bold mb-1">Ready for reliable HVAC service?</h3>
+      <section className="bg-red-600 py-12 px-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-red-500 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div className="relative max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="text-white text-center md:text-left">
+            <h3 className="text-2xl md:text-3xl font-black mb-2">Ready for reliable HVAC service?</h3>
             <p className="text-red-100">Schedule your appointment today — satisfaction guaranteed.</p>
           </div>
-          <a href="/contact" className="bg-white text-red-600 font-bold px-8 py-3 rounded hover:bg-gray-100 transition flex items-center space-x-2">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-            <span>Schedule Service</span>
-          </a>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a href="/contact" className="bg-white text-red-600 font-bold px-8 py-3.5 rounded-lg hover:bg-gray-100 transition flex items-center space-x-2 shadow-lg">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              <span>Schedule Service</span>
+            </a>
+            <a href="tel:2025551234" className="bg-red-700 text-white font-bold px-8 py-3.5 rounded-lg hover:bg-red-800 transition flex items-center space-x-2 border border-red-500">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+              </svg>
+              <span>Call Now</span>
+            </a>
+          </div>
         </div>
       </section>
 
