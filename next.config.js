@@ -1,5 +1,6 @@
 module.exports = {
   reactStrictMode: true,
+  // CI/CD pipeline verified
   trailingSlash: false,
   images: {
     remotePatterns: [
