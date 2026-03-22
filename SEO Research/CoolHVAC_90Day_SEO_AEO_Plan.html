@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoolHVAC — 90-Day SEO/AEO Strategic Plan</title>
+<style>
+  :root {
+    --primary: #0A3D62;
+    --accent: #1E88E5;
+    --accent2: #00ACC1;
+    --success: #2E7D32;
+    --warning: #F57F17;
+    --danger: #C62828;
+    --bg: #F5F7FA;
+    --card: #FFFFFF;
+    --text: #1A1A2E;
+    --muted: #6B7280;
+    --border: #E2E8F0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #1565C0 50%, var(--accent2) 100%);
+    color: white; padding: 60px 40px; text-align: center;
+  }
+  .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .hero .subtitle { font-size: 1.15rem; opacity: 0.9; margin-bottom: 20px; }
+  .hero .meta { display: flex; gap: 30px; justify-content: center; font-size: 0.9rem; opacity: 0.8; flex-wrap: wrap; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+
+  .nav-tabs {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 30px;
+    position: sticky; top: 0; background: var(--bg); padding: 15px 0; z-index: 10;
+    border-bottom: 2px solid var(--border);
+  }
+  .nav-tabs a {
+    padding: 10px 20px; border-radius: 8px; text-decoration: none;
+    font-weight: 600; font-size: 0.85rem; color: var(--muted);
+    background: var(--card); border: 1px solid var(--border); transition: all 0.2s;
+  }
+  .nav-tabs a:hover, .nav-tabs a.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+  section { margin-bottom: 50px; }
+  section h2 {
+    font-size: 1.6rem; color: var(--primary); margin-bottom: 6px; padding-bottom: 10px;
+    border-bottom: 3px solid var(--accent); display: inline-block;
+  }
+  section .section-desc { color: var(--muted); margin-bottom: 25px; margin-top: 6px; }
+  h3 { font-size: 1.15rem; color: var(--primary); margin: 25px 0 12px; }
+
+  .card {
+    background: var(--card); border-radius: 12px; padding: 24px; margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06); border: 1px solid var(--border);
+  }
+  .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+  .card-header h3 { margin: 0; }
+
+  .badge {
+    display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .badge-high { background: #E8F5E9; color: var(--success); }
+  .badge-medium { background: #FFF8E1; color: var(--warning); }
+  .badge-low { background: #FFEBEE; color: var(--danger); }
+  .badge-transactional { background: #E3F2FD; color: var(--accent); }
+  .badge-commercial { background: #F3E5F5; color: #7B1FA2; }
+  .badge-informational { background: #FFF3E0; color: #E65100; }
+  .badge-local { background: #E0F2F1; color: #00695C; }
+
+  table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9rem; }
+  th { background: var(--primary); color: white; padding: 12px 15px; text-align: left; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  td { padding: 11px 15px; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: #F0F7FF; }
+  tr:last-child td { border-bottom: none; }
+
+  .kw-table { overflow-x: auto; }
+  .kw-table table { min-width: 900px; }
+
+  .competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
+  .competitor-card {
+    background: var(--card); border-radius: 12px; padding: 20px;
+    border: 1px solid var(--border); transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .competitor-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+  .competitor-card .rank {
+    width: 32px; height: 32px; border-radius: 50%; background: var(--accent);
+    color: white; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 0.85rem; margin-bottom: 10px;
+  }
+  .competitor-card h4 { font-size: 1.05rem; margin-bottom: 4px; }
+  .competitor-card .url { color: var(--accent); font-size: 0.8rem; margin-bottom: 10px; word-break: break-all; }
+  .competitor-card .strengths { font-size: 0.85rem; color: var(--muted); }
+  .competitor-card .strengths strong { color: var(--text); }
+
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 15px; top: 0; bottom: 0;
+    width: 3px; background: linear-gradient(to bottom, var(--accent), var(--accent2));
+    border-radius: 2px;
+  }
+  .timeline-item { position: relative; margin-bottom: 35px; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -33px; top: 6px;
+    width: 16px; height: 16px; border-radius: 50%; border: 3px solid var(--accent);
+    background: white;
+  }
+  .timeline-item.active::before { background: var(--accent); }
+
+  .phase-header {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white; padding: 18px 24px; border-radius: 10px; margin-bottom: 18px;
+  }
+  .phase-header h3 { color: white; margin: 0 0 4px; font-size: 1.2rem; }
+  .phase-header .phase-dates { opacity: 0.85; font-size: 0.9rem; }
+
+  .task-list { list-style: none; padding: 0; }
+  .task-list li {
+    padding: 12px 16px; margin-bottom: 8px; background: var(--card);
+    border-radius: 8px; border-left: 4px solid var(--accent);
+    display: flex; align-items: flex-start; gap: 12px; font-size: 0.92rem;
+  }
+  .task-list li .task-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+  .task-list li .priority { margin-left: auto; flex-shrink: 0; }
+  .task-list li.critical { border-left-color: var(--danger); }
+  .task-list li.strategic { border-left-color: var(--accent2); }
+
+  .metric-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+  .metric-box {
+    background: var(--card); border-radius: 10px; padding: 20px; text-align: center;
+    border: 1px solid var(--border);
+  }
+  .metric-box .value { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
+  .metric-box .label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+
+  .aeo-callout {
+    background: linear-gradient(135deg, #E8F5E9, #E0F7FA); border-radius: 12px;
+    padding: 24px; margin: 20px 0; border-left: 5px solid var(--accent2);
+  }
+  .aeo-callout h3 { color: #00695C; margin-top: 0; }
+
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { padding: 8px 0; font-size: 0.92rem; display: flex; align-items: flex-start; gap: 8px; }
+  .checklist li::before { content: '☐'; font-size: 1.1rem; color: var(--accent); flex-shrink: 0; }
+
+  .insight-box {
+    background: #FFF8E1; border-radius: 10px; padding: 16px 20px;
+    border-left: 4px solid var(--warning); margin: 15px 0; font-size: 0.92rem;
+  }
+  .insight-box strong { color: var(--warning); }
+
+  .sources { font-size: 0.8rem; color: var(--muted); margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .sources a { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 1.7rem; }
+    .hero { padding: 40px 20px; }
+    .competitor-grid { grid-template-columns: 1fr; }
+    .metric-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-tabs a { padding: 8px 14px; font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>CoolHVAC — 90-Day SEO & AEO Plan</h1>
+  <p class="subtitle">Keyword Research · Competitor Intelligence · Actionable Roadmap</p>
+  <div class="meta">
+    <span>Prepared for: JMO HVAC Service Inc. (CoolHVAC)</span>
+    <span>Market: Washington DC · Maryland · Northern Virginia</span>
+    <span>Date: March 22, 2026</span>
+  </div>
+</div>
+
+<div class="container">
+
+<nav class="nav-tabs">
+  <a href="#keywords">Top 20 Keywords</a>
+  <a href="#competitors">Top 10 Competitors</a>
+  <a href="#reverse">Reverse Engineering</a>
+  <a href="#phase1">Phase 1: Foundation</a>
+  <a href="#phase2">Phase 2: Content Engine</a>
+  <a href="#phase3">Phase 3: Authority & AEO</a>
+  <a href="#kpis">KPIs & Metrics</a>
+</nav>
+
+<!-- ==================== SECTION 1: TOP 20 KEYWORDS ==================== -->
+<section id="keywords">
+  <h2>Top 20 Highest-Value SEO Keywords</h2>
+  <p class="section-desc">Ranked by a composite score of search volume, commercial intent, conversion potential, and achievable difficulty for a DC-metro HVAC company.</p>
+
+  <div class="metric-grid">
+    <div class="metric-box"><div class="value">135K+</div><div class="label">Monthly Searches (Top Keyword)</div></div>
+    <div class="metric-box"><div class="value">$5–$20</div><div class="label">Avg. CPC Range</div></div>
+    <div class="metric-box"><div class="value">70%</div><div class="label">Transactional / Commercial</div></div>
+    <div class="metric-box"><div class="value">20</div><div class="label">Priority Keywords</div></div>
+  </div>
+
+  <div class="kw-table">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Keyword</th>
+        <th>Est. Monthly Volume</th>
+        <th>Intent</th>
+        <th>Difficulty</th>
+        <th>Opportunity</th>
+        <th>Recommended Content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>AC repair near me</strong></td>
+        <td>135,000</td>
+        <td><span class="badge badge-transactional">Transactional</span></td>
+        <td>Hard</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Service page + GBP optimization</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>HVAC repair near me</strong></td>
+        <td>90,500</td>
+        <td><span class="badge badge-transactional">Transactional</span></td>
+        <td>Hard</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Service page + location pages</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>AC repair Washington DC</strong></td>
+        <td>2,400</td>
+        <td><span class="badge badge-transactional">Transactional</span></td>
+        <td>Moderate</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Dedicated DC location page</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>heating and cooling near me</strong></td>
+        <td>90,500</td>
+        <td><span class="badge badge-commercial">Commercial</span></td>
+        <td>Hard</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Homepage + service overview page</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>HVAC contractor near me</strong></td>
+        <td>60,500</td>
+        <td><span class="badge badge-transactional">Transactional</span></td>
+        <td>Hard</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>About / trust page + GBP</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>furnace repair near me</strong></td>
+        <td>135,000</td>
+        <td><span class="badge badge-transactional">Transactional</span></td>
+        <td>Hard</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Heating repair service page</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><strong>AC installation near me</strong></td>
+        <td>60,500</td>
+        <td><span class="badge badge-transactional">Transactional</span></td>
+        <td>Moderate</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Installation service page + pricing</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><strong>HVAC company Washington DC</strong></td>
+        <td>1,900</td>
+        <td><span class="badge badge-commercial">Commercial</span></td>
+        <td>Moderate</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Homepage + DC location page</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><strong>emergency AC repair</strong></td>
+        <td>6,600</td>
+        <td><span class="badge badge-transactional">Transactional</span></td>
+        <td>Moderate</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Emergency services landing page</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><strong>heat pump installation cost</strong></td>
+        <td>14,800</td>
+        <td><span class="badge badge-commercial">Commercial</span></td>
+        <td>Moderate</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Pricing guide / blog post</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td><strong>HVAC maintenance near me</strong></td>
+        <td>33,100</td>
+        <td><span class="badge badge-commercial">Commercial</span></td>
+        <td>Moderate</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Maintenance plan page</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td><strong>AC tune-up near me</strong></td>
+        <td>18,100</td>
+        <td><span class="badge badge-transactional">Transactional</span></td>
+        <td>Moderate</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Seasonal offer landing page</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td><strong>new HVAC system cost</strong></td>
+        <td>22,200</td>
+        <td><span class="badge badge-commercial">Commercial</span></td>
+        <td>Moderate</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Comprehensive pricing guide</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td><strong>HVAC Bethesda MD</strong></td>
+        <td>720</td>
+        <td><span class="badge badge-local">Local</span></td>
+        <td>Easy</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Bethesda location page</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td><strong>AC repair Arlington VA</strong></td>
+        <td>880</td>
+        <td><span class="badge badge-local">Local</span></td>
+        <td>Easy</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Arlington location page</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td><strong>indoor air quality services</strong></td>
+        <td>12,100</td>
+        <td><span class="badge badge-commercial">Commercial</span></td>
+        <td>Moderate</td>
+        <td><span class="badge badge-medium">Medium</span></td>
+        <td>IAQ service page + blog content</td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td><strong>24 hour HVAC repair</strong></td>
+        <td>4,400</td>
+        <td><span class="badge badge-transactional">Transactional</span></td>
+        <td>Moderate</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Emergency page with live chat CTA</td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td><strong>heat pump vs gas furnace</strong></td>
+        <td>9,900</td>
+        <td><span class="badge badge-informational">Informational</span></td>
+        <td>Moderate</td>
+        <td><span class="badge badge-medium">Medium</span></td>
+        <td>Comparison blog / guide</td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td><strong>HVAC Silver Spring MD</strong></td>
+        <td>590</td>
+        <td><span class="badge badge-local">Local</span></td>
+        <td>Easy</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Silver Spring location page</td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td><strong>best SEER2 air conditioner 2026</strong></td>
+        <td>3,600</td>
+        <td><span class="badge badge-commercial">Commercial</span></td>
+        <td>Easy</td>
+        <td><span class="badge badge-medium">Medium</span></td>
+        <td>Buyer's guide blog post</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="insight-box">
+    <strong>Key Insight:</strong> Keywords #14, #15, and #19 (local city-specific terms) have low competition but extremely high conversion rates. A single well-optimized location page can generate 5–15 qualified calls per month. These are your quickest wins.
+  </div>
+</section>
+
+<!-- ==================== SECTION 2: TOP 10 COMPETITORS ==================== -->
+<section id="competitors">
+  <h2>Top 10 Highest-Ranking Competitor Websites</h2>
+  <p class="section-desc">Identified by analyzing which DC-metro HVAC companies rank for the 20 keywords above across Google Search, Google Maps, and AI answer engines.</p>
+
+  <div class="competitor-grid">
+    <div class="competitor-card">
+      <div class="rank">1</div>
+      <h4>F.H. Furr</h4>
+      <div class="url">fhfurr.com</div>
+      <div class="strengths">
+        <strong>Why they rank:</strong> 40+ years in market. Extensive blog (100+ posts), dedicated location pages for every city in DC/MD/VA, active review strategy, FAQ content, and Preferred Partner Plan membership funnel. Multi-service (HVAC + plumbing + electrical) creates massive internal linking opportunities.
+      </div>
+    </div>
+    <div class="competitor-card">
+      <div class="rank">2</div>
+      <h4>John C. Flood</h4>
+      <div class="url">johncflood.com</div>
+      <div class="strengths">
+        <strong>Why they rank:</strong> 120+ years of brand authority. Organization schema + breadcrumb markup. Strong geo-targeting in title tags. Multi-service model with rich service pages. NitroPack speed optimization. Deep trust signals from long market presence.
+      </div>
+    </div>
+    <div class="competitor-card">
+      <div class="rank">3</div>
+      <h4>CroppMetcalfe / Service Experts</h4>
+      <div class="url">croppmetcalfe.com → serviceexperts.com</div>
+      <div class="strengths">
+        <strong>Why they rank:</strong> Acquired by Service Experts — a national brand with enormous domain authority. Location pages for every DC-metro service area. National backlink profile with local content strategy. Brand-name recognition in AI answer results.
+      </div>
+    </div>
+    <div class="competitor-card">
+      <div class="rank">4</div>
+      <h4>Magnolia Companies</h4>
+      <div class="url">magnoliacompanies.com</div>
+      <div class="strengths">
+        <strong>Why they rank:</strong> 75+ years serving DC area. Comprehensive mega-menu structure covering plumbing, heating, AC, water heaters, IAQ, and commercial services. Strong brand presence. Multi-channel social media engagement.
+      </div>
+    </div>
+    <div class="competitor-card">
+      <div class="rank">5</div>
+      <h4>Polar Bear Air Conditioning</h4>
+      <div class="url">polarbearairconditioning.com</div>
+      <div class="strengths">
+        <strong>Why they rank:</strong> Memorable brand name (strong for voice search / AEO). Focused exclusively on HVAC (not diluted by plumbing/electrical). DC-area specialist positioning with neighborhood-level targeting.
+      </div>
+    </div>
+    <div class="competitor-card">
+      <div class="rank">6</div>
+      <h4>Tuckers AC, Heating & Plumbing</h4>
+      <div class="url">tuckersac.com</div>
+      <div class="strengths">
+        <strong>Why they rank:</strong> Dedicated city-level service area pages (/service-areas/washington-dc-hvac/). Clean URL structure. Strong local citation consistency across directories. Focused DC-metro coverage.
+      </div>
+    </div>
+    <div class="competitor-card">
+      <div class="rank">7</div>
+      <h4>Vernon Heating & Cooling</h4>
+      <div class="url">vernonheating.com</div>
+      <div class="strengths">
+        <strong>Why they rank:</strong> NATE-certified positioning (matches CoolHVAC's credential). Service-area pages with geo-specific content. Full-service residential HVAC-R contractor branding. Strong for repair-intent keywords.
+      </div>
+    </div>
+    <div class="competitor-card">
+      <div class="rank">8</div>
+      <h4>Riley Heat & Air</h4>
+      <div class="url">rileyheatandair.com</div>
+      <div class="strengths">
+        <strong>Why they rank:</strong> Dual MD/DC coverage. Complete service mix (AC, heating, furnace, duct cleaning). Clear service pages with pricing transparency. Growing review profile.
+      </div>
+    </div>
+    <div class="competitor-card">
+      <div class="rank">9</div>
+      <h4>EDGE Energy</h4>
+      <div class="url">edge-gogreen.com</div>
+      <div class="strengths">
+        <strong>Why they rank:</strong> "Green" / energy-efficiency positioning captures emerging keywords. Award-winning brand. Serves MD, DC, VA. Differentiated messaging around eco-friendly HVAC — wins "energy efficient HVAC" and "green HVAC" searches.
+      </div>
+    </div>
+    <div class="competitor-card">
+      <div class="rank">10</div>
+      <h4>DC Heating and Air Conditioning</h4>
+      <div class="url">dchvacs.com</div>
+      <div class="strengths">
+        <strong>Why they rank:</strong> Exact-match domain for "DC HVAC" queries. Both residential and commercial. Installation, repair, and service coverage. Domain name alone creates strong signal for local DC keywords.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 3: REVERSE ENGINEERING ==================== -->
+<section id="reverse">
+  <h2>Reverse-Engineered Competitor Strategies</h2>
+  <p class="section-desc">What the top 10 competitors do that CoolHVAC should replicate and improve upon.</p>
+
+  <div class="card">
+    <h3>1. Location Page Strategy (Used by 8 of 10 Competitors)</h3>
+    <p>Every top competitor creates unique pages for each city they serve. F.H. Furr has pages like <code>/dc-metro-area/service-area/hvac/annandale-va/</code>. These pages include neighborhood-specific photos, local project references, unique FAQs, and dedicated CTAs. They target "[service] + [city]" keywords that convert at 3–5x the rate of generic pages.</p>
+    <div class="insight-box"><strong>CoolHVAC Gap:</strong> Your site lists 163+ service areas but lacks dedicated landing pages for each city. This is the single biggest missed SEO opportunity.</div>
+  </div>
+
+  <div class="card">
+    <h3>2. Content Depth & Blog Strategy (Used by 7 of 10)</h3>
+    <p>F.H. Furr, John C. Flood, and CroppMetcalfe maintain active blogs covering seasonal maintenance tips, "vs" comparisons (heat pump vs furnace), cost guides, and troubleshooting content. This captures informational keywords and builds topical authority that lifts all pages. Average top-ranking HVAC blog posts are 1,200–2,000 words with FAQ sections.</p>
+  </div>
+
+  <div class="card">
+    <h3>3. Multi-Service Internal Linking (Used by 6 of 10)</h3>
+    <p>Competitors like F.H. Furr and Magnolia cross-link between HVAC, plumbing, and electrical pages, creating a dense internal link network. CoolHVAC can replicate this by connecting AC repair → maintenance plans → indoor air quality → heating services into logical service clusters.</p>
+  </div>
+
+  <div class="card">
+    <h3>4. Schema Markup & Structured Data (Used by 5 of 10)</h3>
+    <p>John C. Flood implements Organization, Breadcrumb, and Service schema. Top performers also use FAQ schema, Review schema, and LocalBusiness schema with <code>areaServed</code> and <code>knowsAbout</code> properties — critical for both Google and AI answer engines.</p>
+  </div>
+
+  <div class="card">
+    <h3>5. Review Velocity & Social Proof (Used by 9 of 10)</h3>
+    <p>CoolHVAC's 4.9/5 with 500+ reviews is competitive. However, top competitors like F.H. Furr have 5,000+ reviews. The velocity of new reviews (not just total count) is what signals freshness to Google and AI engines. Implementing a systematic post-service SMS review request flow is standard among top competitors.</p>
+  </div>
+
+  <div class="aeo-callout">
+    <h3>AEO-Specific Competitive Gap</h3>
+    <p>None of the 10 competitors are fully optimized for Answer Engine Optimization yet. This is CoolHVAC's window. AI engines like ChatGPT, Perplexity, and Google AI Overviews select businesses based on <strong>entity clarity</strong> (is CoolHVAC an unambiguous HVAC provider in DC?), <strong>source agreement</strong> (do multiple trusted sites mention you?), and <strong>answer-ready content</strong> (can AI directly quote a 40–60 word answer from your page?).</p>
+    <p style="margin-top:10px;">The first HVAC company in DC to nail AEO will own the zero-click layer — and that should be CoolHVAC.</p>
+  </div>
+</section>
+
+<!-- ==================== PHASE 1: DAYS 1-30 ==================== -->
+<section id="phase1">
+  <h2>Phase 1: Technical Foundation & Local SEO (Days 1–30)</h2>
+  <p class="section-desc">Fix the infrastructure so every piece of content you create in Phases 2 and 3 has maximum impact.</p>
+
+  <div class="phase-header">
+    <h3>Week 1 — Measurement & GBP Setup (Days 1–7)</h3>
+    <div class="phase-dates">Goal: Establish baselines and fix Google Business Profile</div>
+  </div>
+  <ul class="task-list">
+    <li class="critical">
+      <span class="task-icon">📊</span>
+      <div><strong>Install GA4 + Google Search Console</strong> — Verify site ownership, save baseline snapshots of organic clicks, impressions, and top queries. Add UTM parameters to GBP website link.</div>
+      <span class="badge badge-low priority">Critical</span>
+    </li>
+    <li class="critical">
+      <span class="task-icon">📍</span>
+      <div><strong>Optimize Google Business Profile</strong> — Verify primary category is "HVAC Contractor." Add secondary categories: "Air Conditioning Repair Service," "Heating Contractor," "Air Conditioning Contractor." Upload 20+ genuine photos of team, trucks, completed jobs. Write keyword-rich business description. Set accurate service areas.</div>
+      <span class="badge badge-low priority">Critical</span>
+    </li>
+    <li>
+      <span class="task-icon">📞</span>
+      <div><strong>Implement call tracking</strong> — Set up CallRail or equivalent to attribute phone calls to organic search, GBP, and specific landing pages. This is how you prove ROI.</div>
+      <span class="badge badge-high priority">High</span>
+    </li>
+    <li>
+      <span class="task-icon">✅</span>
+      <div><strong>NAP audit</strong> — Verify Name, Address, Phone are identical across GBP, website, Yelp, Angi, BBB, HomeAdvisor, and all directories. Use BrightLocal to find and fix inconsistencies.</div>
+      <span class="badge badge-high priority">High</span>
+    </li>
+  </ul>
+
+  <div class="phase-header">
+    <h3>Week 2 — Technical SEO & Schema (Days 8–14)</h3>
+    <div class="phase-dates">Goal: Make your site fast, crawlable, and machine-readable</div>
+  </div>
+  <ul class="task-list">
+    <li class="critical">
+      <span class="task-icon">⚡</span>
+      <div><strong>Page speed optimization</strong> — Target Core Web Vitals: LCP under 2.5s, CLS under 0.1. Compress images to WebP, enable lazy loading, eliminate render-blocking scripts. Test with PageSpeed Insights.</div>
+      <span class="badge badge-low priority">Critical</span>
+    </li>
+    <li class="critical">
+      <span class="task-icon">🔧</span>
+      <div><strong>Implement LocalBusiness schema</strong> — Add JSON-LD with: <code>@type: HVACBusiness</code>, <code>areaServed</code> (list all cities), <code>knowsAbout</code> (AC repair, heating, installation, maintenance, IAQ), <code>sameAs</code> (Yelp, BBB, social profiles). This is the #1 AEO technical requirement.</div>
+      <span class="badge badge-low priority">Critical</span>
+    </li>
+    <li>
+      <span class="task-icon">🗺️</span>
+      <div><strong>XML sitemap + robots.txt</strong> — Create and submit XML sitemap. Ensure all service and location pages are indexed. Block thin or duplicate pages.</div>
+      <span class="badge badge-high priority">High</span>
+    </li>
+    <li>
+      <span class="task-icon">📱</span>
+      <div><strong>Mobile UX audit</strong> — Verify tap targets are 48px+, phone number is click-to-call on every page, forms work on mobile, and font sizes are readable.</div>
+      <span class="badge badge-high priority">High</span>
+    </li>
+  </ul>
+
+  <div class="phase-header">
+    <h3>Weeks 3–4 — On-Page Optimization (Days 15–30)</h3>
+    <div class="phase-dates">Goal: Optimize every existing page for target keywords</div>
+  </div>
+  <ul class="task-list">
+    <li class="critical">
+      <span class="task-icon">🏷️</span>
+      <div><strong>Rewrite title tags & meta descriptions</strong> — Every page gets a unique, keyword-rich title (50–60 chars) and compelling meta description (150–160 chars) with a CTA. Example: "AC Repair in Washington DC | Same-Day Service | CoolHVAC"</div>
+      <span class="badge badge-low priority">Critical</span>
+    </li>
+    <li>
+      <span class="task-icon">📝</span>
+      <div><strong>Optimize H1/H2 structure</strong> — One H1 per page with primary keyword. H2s use secondary keywords. Example: H1 = "AC Repair in Washington DC" → H2 = "24/7 Emergency Air Conditioning Service" → H2 = "Why Choose CoolHVAC for AC Repair"</div>
+      <span class="badge badge-high priority">High</span>
+    </li>
+    <li>
+      <span class="task-icon">🖼️</span>
+      <div><strong>Image alt text + optimization</strong> — Add descriptive alt text to all images. Compress to WebP. Use filenames like <code>ac-repair-washington-dc-coolhvac.webp</code>.</div>
+      <span class="badge badge-medium priority">Medium</span>
+    </li>
+    <li>
+      <span class="task-icon">🔗</span>
+      <div><strong>Internal linking audit</strong> — Connect service pages to each other. Link homepage → top service pages → location pages. No orphan pages. Use descriptive anchor text (not "click here").</div>
+      <span class="badge badge-high priority">High</span>
+    </li>
+    <li class="strategic">
+      <span class="task-icon">🎯</span>
+      <div><strong>AEO hero section rewrite</strong> — Rewrite the homepage hero into a 40–60 word answer-first summary that AI can directly quote. Example: "CoolHVAC provides 24/7 emergency AC repair, heating installation, and HVAC maintenance across Washington DC, Maryland, and Northern Virginia. With 15+ years of experience, 10,000+ homes served, and NATE-certified technicians, we offer same-day service with upfront pricing and a 100% satisfaction guarantee."</div>
+      <span class="badge badge-low priority">Critical</span>
+    </li>
+  </ul>
+</section>
+
+<!-- ==================== PHASE 2: DAYS 31-60 ==================== -->
+<section id="phase2">
+  <h2>Phase 2: Content Engine & Location Pages (Days 31–60)</h2>
+  <p class="section-desc">Build the content that ranks for your 20 target keywords and fills the gaps your competitors exploit.</p>
+
+  <div class="phase-header">
+    <h3>Weeks 5–6 — Service Pages & Location Pages (Days 31–44)</h3>
+    <div class="phase-dates">Goal: Create 6 service pages and 8 location pages</div>
+  </div>
+  <ul class="task-list">
+    <li class="critical">
+      <span class="task-icon">📄</span>
+      <div><strong>Build 6 dedicated service pages</strong> — Each 800–1,200 words with: step-by-step service process, pricing ranges, FAQ section (5+ questions), customer review quotes, clear CTA, and Service schema markup.<br><br>
+        <strong>Pages to create:</strong><br>
+        1. AC Repair (target: "AC repair near me," "AC repair Washington DC")<br>
+        2. Heating & Furnace Repair (target: "furnace repair near me")<br>
+        3. HVAC Installation (target: "AC installation near me," "new HVAC system cost")<br>
+        4. AC Maintenance & Tune-Up (target: "AC tune-up near me," "HVAC maintenance")<br>
+        5. Emergency HVAC Service (target: "emergency AC repair," "24 hour HVAC repair")<br>
+        6. Indoor Air Quality (target: "indoor air quality services")
+      </div>
+      <span class="badge badge-low priority">Critical</span>
+    </li>
+    <li class="critical">
+      <span class="task-icon">📍</span>
+      <div><strong>Build 8 city-specific location pages</strong> — Each 600–800 words with UNIQUE content (not copy-paste). Include neighborhood-specific photos, local testimonials, driving directions, and area-specific FAQs.<br><br>
+        <strong>Priority cities:</strong><br>
+        1. Washington DC — 2. Bethesda MD — 3. Arlington VA — 4. Silver Spring MD<br>
+        5. Alexandria VA — 6. Rockville MD — 7. Falls Church VA — 8. Takoma Park MD
+      </div>
+      <span class="badge badge-low priority">Critical</span>
+    </li>
+  </ul>
+
+  <div class="phase-header">
+    <h3>Weeks 7–8 — Blog Content & FAQ Schema (Days 45–60)</h3>
+    <div class="phase-dates">Goal: Publish 6 blog posts targeting commercial + informational keywords</div>
+  </div>
+  <ul class="task-list">
+    <li>
+      <span class="task-icon">✍️</span>
+      <div><strong>Publish 6 blog posts</strong> — 1,200–2,000 words each with FAQ schema, internal links to service pages, and answer-first formatting for AEO.<br><br>
+        <strong>Blog content calendar:</strong><br>
+        1. "Heat Pump vs. Gas Furnace: Which Is Right for Your DC Home?" (KW #18)<br>
+        2. "How Much Does a New HVAC System Cost in 2026? DC-Area Guide" (KW #13)<br>
+        3. "Heat Pump Installation Cost Guide: Washington DC, MD & VA" (KW #10)<br>
+        4. "Best SEER2 Air Conditioners in 2026: Expert Picks" (KW #20)<br>
+        5. "AC Not Blowing Cold Air? 7 Causes & When to Call a Pro" (emergency intent)<br>
+        6. "The Complete DC Homeowner's Guide to HVAC Maintenance" (KW #11)
+      </div>
+      <span class="badge badge-high priority">High</span>
+    </li>
+    <li class="strategic">
+      <span class="task-icon">❓</span>
+      <div><strong>Add FAQ schema to every service page</strong> — Use JSON-LD FAQPage schema. Include 5–8 questions per page targeting "People Also Ask" queries. These are critical for both featured snippets and AI answer citations.</div>
+      <span class="badge badge-low priority">Critical</span>
+    </li>
+    <li class="strategic">
+      <span class="task-icon">🤖</span>
+      <div><strong>AEO content retrofit</strong> — For each service page and blog post, add an answer-first paragraph in the first 100 words that AI can directly quote. Format: "[CoolHVAC] provides [specific service] in [specific area] with [specific differentiator], backed by [specific proof point]."</div>
+      <span class="badge badge-high priority">High</span>
+    </li>
+  </ul>
+</section>
+
+<!-- ==================== PHASE 3: DAYS 61-90 ==================== -->
+<section id="phase3">
+  <h2>Phase 3: Authority Building & AEO Dominance (Days 61–90)</h2>
+  <p class="section-desc">Build the trust signals and external authority that push you past competitors and into AI answers.</p>
+
+  <div class="phase-header">
+    <h3>Weeks 9–10 — Review Engine & Local Authority (Days 61–74)</h3>
+    <div class="phase-dates">Goal: Accelerate review velocity and build local backlinks</div>
+  </div>
+  <ul class="task-list">
+    <li class="critical">
+      <span class="task-icon">⭐</span>
+      <div><strong>Launch automated review funnel</strong> — After every completed job, send SMS review request within 2 hours. Follow up via email at 24 hours. Target: 15–20 new Google reviews per month. Respond to every review within 48 hours with personalized replies.</div>
+      <span class="badge badge-low priority">Critical</span>
+    </li>
+    <li>
+      <span class="task-icon">🏛️</span>
+      <div><strong>Local link building sprint</strong> — Pursue 10–15 local backlinks:<br>
+        • DC, MD, VA Chamber of Commerce memberships<br>
+        • Sponsor local sports teams, school events, or community organizations<br>
+        • Contribute expert quotes to local news outlets (WTOP, DCist, Bethesda Magazine)<br>
+        • Partner with local realtors, property managers, and home inspectors for reciprocal referrals<br>
+        • Get listed in "Best Of" local directories (Washingtonian, DC Best Picks)
+      </div>
+      <span class="badge badge-high priority">High</span>
+    </li>
+    <li class="strategic">
+      <span class="task-icon">🔊</span>
+      <div><strong>AEO entity building</strong> — Secure 5+ named mentions of "CoolHVAC" (not just backlinks) on trusted local sites, neighborhood blogs, and niche directories. AI engines weight named brand mentions as entity confirmation. A named mention without a link can outweigh a high-DA backlink from an irrelevant site.</div>
+      <span class="badge badge-low priority">Critical</span>
+    </li>
+  </ul>
+
+  <div class="phase-header">
+    <h3>Weeks 11–12 — Optimize, Measure & Scale (Days 75–90)</h3>
+    <div class="phase-dates">Goal: Refine what's working, fix what isn't, plan the next 90 days</div>
+  </div>
+  <ul class="task-list">
+    <li>
+      <span class="task-icon">📈</span>
+      <div><strong>Near-miss keyword optimization</strong> — In Google Search Console, find keywords where CoolHVAC ranks positions 6–20. These are close to page 1. Refine those pages: improve titles, add FAQ content, strengthen internal links, and expand answer-first content.</div>
+      <span class="badge badge-high priority">High</span>
+    </li>
+    <li>
+      <span class="task-icon">🧪</span>
+      <div><strong>AI visibility testing</strong> — Search for your 20 target keywords in ChatGPT, Perplexity, and Google AI Overviews. Document whether CoolHVAC is mentioned, cited, or recommended. Identify gaps and adjust content accordingly.</div>
+      <span class="badge badge-high priority">High</span>
+    </li>
+    <li>
+      <span class="task-icon">📊</span>
+      <div><strong>Monthly performance report</strong> — Track and compare to baseline: organic traffic, GBP calls, GBP clicks, form submissions, keyword rankings, review count, and AI visibility. Identify top 3 wins and top 3 priorities for next quarter.</div>
+      <span class="badge badge-high priority">High</span>
+    </li>
+    <li class="strategic">
+      <span class="task-icon">🗓️</span>
+      <div><strong>Plan Q2 content calendar</strong> — Based on what ranked and converted in Phase 2, plan the next 8–12 blog posts and 8 more location pages. Prioritize content around summer AC season (peak demand starts May).</div>
+      <span class="badge badge-medium priority">Medium</span>
+    </li>
+  </ul>
+</section>
+
+<!-- ==================== KPI SECTION ==================== -->
+<section id="kpis">
+  <h2>Success Metrics & KPIs</h2>
+  <p class="section-desc">How to measure whether the plan is working. Track weekly, report monthly.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Baseline (Day 1)</th>
+        <th>30-Day Target</th>
+        <th>60-Day Target</th>
+        <th>90-Day Target</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Organic monthly sessions</strong></td>
+        <td>Record in GA4</td>
+        <td>+15%</td>
+        <td>+40%</td>
+        <td>+75%</td>
+      </tr>
+      <tr>
+        <td><strong>Keywords on page 1</strong></td>
+        <td>Audit via GSC</td>
+        <td>+5 keywords</td>
+        <td>+12 keywords</td>
+        <td>+20 keywords</td>
+      </tr>
+      <tr>
+        <td><strong>GBP calls per month</strong></td>
+        <td>Record baseline</td>
+        <td>+10%</td>
+        <td>+25%</td>
+        <td>+50%</td>
+      </tr>
+      <tr>
+        <td><strong>Google reviews</strong></td>
+        <td>500+</td>
+        <td>520</td>
+        <td>550</td>
+        <td>580+</td>
+      </tr>
+      <tr>
+        <td><strong>Service/location pages</strong></td>
+        <td>~5</td>
+        <td>5 (optimized)</td>
+        <td>20</td>
+        <td>20+</td>
+      </tr>
+      <tr>
+        <td><strong>Blog posts published</strong></td>
+        <td>0</td>
+        <td>0</td>
+        <td>6</td>
+        <td>6+</td>
+      </tr>
+      <tr>
+        <td><strong>AI engine mentions</strong></td>
+        <td>Audit baseline</td>
+        <td>Schema live</td>
+        <td>First citations</td>
+        <td>3+ AI mentions</td>
+      </tr>
+      <tr>
+        <td><strong>Local backlinks acquired</strong></td>
+        <td>Audit baseline</td>
+        <td>3</td>
+        <td>7</td>
+        <td>12+</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="aeo-callout" style="margin-top: 30px;">
+    <h3>The AEO Advantage — Why This Matters Now</h3>
+    <p>Brands implementing combined SEO + AEO strategies typically see <strong>25–35% higher conversion rates</strong> compared to traditional SEO alone. The critical shift: traditional SEO is position-based visibility (you rank on a list), but AEO is presence-based selection (AI names you or you're invisible).</p>
+    <p style="margin-top: 10px;">None of your top 10 DC-area competitors are fully AEO-optimized yet. By executing this plan, CoolHVAC can be the first HVAC company in the DC metro to own the AI answer layer — capturing leads before competitors even realize the game has changed.</p>
+  </div>
+
+  <div class="card" style="margin-top: 25px;">
+    <h3>Recommended Tools</h3>
+    <table>
+      <thead><tr><th>Category</th><th>Tool</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>Analytics</td><td>GA4 + Google Search Console</td><td>Traffic, rankings, query data</td></tr>
+        <tr><td>Call tracking</td><td>CallRail</td><td>Phone call attribution to organic</td></tr>
+        <tr><td>Local visibility</td><td>Local Falcon or BrightLocal</td><td>Map pack rank tracking by ZIP</td></tr>
+        <tr><td>Citations</td><td>BrightLocal</td><td>NAP consistency + directory management</td></tr>
+        <tr><td>Page speed</td><td>PageSpeed Insights</td><td>Core Web Vitals monitoring</td></tr>
+        <tr><td>Schema testing</td><td>Google Rich Results Test</td><td>Validate structured data</td></tr>
+        <tr><td>AI monitoring</td><td>Manual + Perplexity/ChatGPT</td><td>Track AI answer visibility</td></tr>
+        <tr><td>Reviews</td><td>Podium or Birdeye</td><td>Automated SMS review requests</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="sources">
+  <h3>Sources & References</h3>
+  <p>
+    <a href="https://www.hvacwebmasters.com/services/keyword-strategy/top-100-hvac-keywords/">HVAC Webmasters — Top 100 HVAC Keywords</a> ·
+    <a href="https://rsgonzales.com/blog/hvac-seo-keywords/">RS Gonzales — 101 HVAC SEO Keywords 2026</a> ·
+    <a href="https://serpwars.com/hvac-keywords/">SerpWars — Top 100 HVAC Keywords</a> ·
+    <a href="https://searchengineland.com/local-seo-sprints-a-90-day-plan-for-service-businesses-in-2026-469059">Search Engine Land — Local SEO 90-Day Plan 2026</a> ·
+    <a href="https://swiftaiseo.com/local-aeo/2026-guide/">SwiftAI — Local AEO 2026 Guide</a> ·
+    <a href="https://1seo.com/blog/from-hey-google-to-high-value-leads-aeo-for-hvac-electrical-and-home-service-brands/">1SEO — AEO for HVAC Brands</a> ·
+    <a href="https://blog.hubspot.com/marketing/answer-engine-optimization-trends">HubSpot — AEO Trends 2026</a> ·
+    <a href="https://hvacmarketingxperts.com/hvac-keywords/">HVAC Marketing Xperts — Top 200 HVAC Keywords</a> ·
+    <a href="https://rankhvac.com/resources/hvac-keywords/">RankHVAC — High-Intent Keywords</a> ·
+    <a href="https://firstpagesage.com/seo-blog/the-top-hvac-geo-aeo-agencies/">First Page Sage — Top HVAC AEO Agencies 2026</a>
+  </p>
+</div>
+
+</div>
+</body>
+</html>
