@@ -12,7 +12,7 @@ export async function POST(request) {
 
   const gmail = google.gmail({ version: "v1", auth });
 
-  const subject = `New Service Request – ${service || "General Inquiry"}`;
+  const subject = `New Service Request - ${service || "General Inquiry"}`;
   const body = [
     `Name: ${firstName} ${lastName}`,
     `Email: ${email}`,
