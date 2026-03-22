@@ -97,7 +97,7 @@ export default function Contact() {
                 </svg>
                 <span>Request A Call</span>
               </button>
-              <p className="text-xs text-gray-400 text-center">By submitting this form, you agree to be contacted by TryCool HVAC regarding your service request.</p>
+              <p className="text-xs text-gray-400 text-center">By submitting this form, you agree to be contacted by CoolHVAC regarding your service request.</p>
             </form>
           </div>
 
@@ -177,7 +177,7 @@ export default function Contact() {
                 <div>
                   <h3 className="text-lg font-bold mb-2">Our Service Guarantee</h3>
                   <p className="text-blue-200 text-sm leading-relaxed mb-3">
-                    Every TryCool HVAC service comes with our Done Right Promise. If you are not 100% satisfied with our work, we will make it right — guaranteed.
+                    Every CoolHVAC service comes with our Done Right Promise. If you are not 100% satisfied with our work, we will make it right — guaranteed.
                   </p>
                   <div className="flex items-center space-x-2">
                     <div className="flex text-yellow-400 text-sm">★★★★★</div>

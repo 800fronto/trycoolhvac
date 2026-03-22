@@ -75,7 +75,7 @@ export default function Locations() {
           </div>
           <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">HVAC Service Areas</h1>
           <p className="text-lg text-gray-300 max-w-2xl leading-relaxed">
-            TryCool HVAC proudly serves <strong className="text-white">{locations.length} locations</strong> across Washington DC, Maryland, and Northern Virginia. Find expert heating and AC services near you.
+            CoolHVAC proudly serves <strong className="text-white">{locations.length} locations</strong> across Washington DC, Maryland, and Northern Virginia. Find expert heating and AC services near you.
           </p>
 
           {/* Stats */}

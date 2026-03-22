@@ -7,7 +7,7 @@ export default function Home() {
     <div className="bg-white">
       <Navbar />
 
-      {/* Hero Section — enhanced with layered gradient and trust signals */}
+      {/* Hero Section — split layout with technician photo */}
       <section className="relative bg-navy-900 text-white overflow-hidden">
         {/* Animated gradient layers */}
         <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-blue-800/30 to-navy-900"></div>
@@ -15,51 +15,75 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-red-600/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
 
         <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-6">
-              <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-              <span className="text-sm font-medium text-gray-200">Serving the DC Metro Area Since 2009</span>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left: Text content */}
+            <div>
+              <div className="inline-flex items-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-6">
+                <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+                <span className="text-sm font-medium text-gray-200">Serving the DC Metro Area Since 2009</span>
+              </div>
+
+              <h1 className="text-4xl md:text-6xl font-black mb-5 leading-[1.1] tracking-tight">
+                Reliable service —<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">upfront pricing, no surprises</span>
+              </h1>
+
+              <p className="text-lg md:text-xl text-gray-300 max-w-xl mb-10 leading-relaxed">
+                Expert residential and commercial HVAC services across the DC metro area. Our certified technicians are available when you need them most.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-12">
+                <a href="/contact" className="bg-red-600 hover:bg-red-700 text-white px-8 py-3.5 rounded-lg font-bold text-base transition shadow-lg shadow-red-600/25 flex items-center space-x-2">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                  </svg>
+                  <span>Schedule Service</span>
+                </a>
+                <a href="tel:2025551234" className="text-white font-bold text-xl hover:text-red-400 transition flex items-center space-x-2">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                  </svg>
+                  <span>(202) 555-1234</span>
+                </a>
+              </div>
+
+              {/* Trust signals row */}
+              <div className="flex flex-wrap items-center gap-6 border-t border-white/10 pt-6">
+                <div className="flex items-center space-x-2">
+                  <div className="flex text-yellow-400 text-sm">★★★★★</div>
+                  <span className="text-sm text-gray-300"><span className="text-white font-bold">4.9/5</span> (500+ reviews)</span>
+                </div>
+                <div className="w-px h-5 bg-white/20 hidden sm:block"></div>
+                <div className="flex items-center space-x-2">
+                  <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  <span className="text-sm text-gray-300">Licensed & Insured</span>
+                </div>
+                <div className="w-px h-5 bg-white/20 hidden sm:block"></div>
+                <div className="flex items-center space-x-2">
+                  <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  <span className="text-sm text-gray-300">Same-Day Service</span>
+                </div>
+              </div>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-black mb-5 leading-[1.1] tracking-tight">
-              Reliable service —<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">upfront pricing, no surprises</span>
-            </h1>
-
-            <p className="text-lg md:text-xl text-gray-300 max-w-xl mb-10 leading-relaxed">
-              Expert residential and commercial HVAC services across the DC metro area. Our certified technicians are available when you need them most.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-12">
-              <a href="/contact" className="bg-red-600 hover:bg-red-700 text-white px-8 py-3.5 rounded-lg font-bold text-base transition shadow-lg shadow-red-600/25 flex items-center space-x-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
-                <span>Schedule Service</span>
-              </a>
-              <a href="tel:2025551234" className="text-white font-bold text-xl hover:text-red-400 transition flex items-center space-x-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
-                </svg>
-                <span>(202) 555-1234</span>
-              </a>
-            </div>
-
-            {/* Trust signals row */}
-            <div className="flex flex-wrap items-center gap-6 border-t border-white/10 pt-6">
-              <div className="flex items-center space-x-2">
-                <div className="flex text-yellow-400 text-sm">★★★★★</div>
-                <span className="text-sm text-gray-300"><span className="text-white font-bold">4.9/5</span> (500+ reviews)</span>
-              </div>
-              <div className="w-px h-5 bg-white/20 hidden sm:block"></div>
-              <div className="flex items-center space-x-2">
-                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span className="text-sm text-gray-300">Licensed & Insured</span>
-              </div>
-              <div className="w-px h-5 bg-white/20 hidden sm:block"></div>
-              <div className="flex items-center space-x-2">
-                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span className="text-sm text-gray-300">Same-Day Service</span>
+            {/* Right: Technician photo */}
+            <div className="hidden md:block relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                <img
+                  src="https://images.unsplash.com/photo-1621905251918-06a67b48f12c?auto=format&fit=crop&w=800&q=80"
+                  alt="CoolHVAC certified technician on the job"
+                  className="w-full h-[480px] object-cover"
+                />
+                {/* Overlay badge */}
+                <div className="absolute bottom-4 left-4 bg-white rounded-xl px-4 py-3 shadow-lg flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  </div>
+                  <div>
+                    <p className="text-navy-900 font-bold text-sm">Background Checked</p>
+                    <p className="text-gray-500 text-xs">All technicians verified</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -200,9 +224,9 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { text: "TryCool was fantastic. They arrived same day and fixed our AC unit quickly. Very professional and fair pricing.", name: "Sarah M.", location: "Washington, DC", source: "Google" },
-              { text: "Our furnace stopped working on a cold night. TryCool had a technician out within 2 hours. Excellent service and communication.", name: "James R.", location: "Bethesda, MD", source: "Yelp" },
-              { text: "We had a full HVAC system installed. The team was knowledgeable, clean, and finished ahead of schedule. Highly recommend!", name: "Patricia L.", location: "Arlington, VA", source: "Google" },
+              { text: "CoolHVAC was fantastic. They arrived same day and fixed our AC unit quickly. Very professional and fair pricing.", name: "Sarah M.", location: "Washington, DC", source: "Google", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=80&q=80" },
+              { text: "Our furnace stopped working on a cold night. CoolHVAC had a technician out within 2 hours. Excellent service and communication.", name: "James R.", location: "Bethesda, MD", source: "Yelp", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" },
+              { text: "We had a full HVAC system installed. The team was knowledgeable, clean, and finished ahead of schedule. Highly recommend!", name: "Patricia L.", location: "Arlington, VA", source: "Google", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=80" },
             ].map((review, i) => (
               <div key={i} className="bg-white rounded-xl border border-gray-200 p-7 relative hover:shadow-lg transition group">
                 {/* Quote mark */}
@@ -213,9 +237,16 @@ export default function Home() {
                 <p className="text-gray-700 text-sm leading-relaxed mb-5 relative z-10">&ldquo;{review.text}&rdquo;</p>
 
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-bold text-navy-900 text-sm">{review.name}</p>
-                    <p className="text-gray-400 text-xs">{review.location}</p>
+                  <div className="flex items-center space-x-3">
+                    <img
+                      src={review.avatar}
+                      alt={review.name}
+                      className="w-10 h-10 rounded-full object-cover border-2 border-gray-100"
+                    />
+                    <div>
+                      <p className="font-bold text-navy-900 text-sm">{review.name}</p>
+                      <p className="text-gray-400 text-xs">{review.location}</p>
+                    </div>
                   </div>
                   <span className="text-xs font-semibold text-gray-400 bg-gray-100 px-2.5 py-1 rounded-full">
                     {review.source} Review
@@ -227,12 +258,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose TryCool */}
+      {/* Why Choose CoolHVAC */}
       <section className="bg-gray-50 py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">Why Choose Us</p>
-            <h2 className="text-3xl font-black text-navy-900 mb-4">The TryCool Advantage</h2>
+            <h2 className="text-3xl font-black text-navy-900 mb-4">The CoolHVAC Advantage</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               From tune-ups and maintenance to repairs and full system replacement, we provide services that keep your home or business at the perfect temperature.
             </p>
@@ -286,6 +317,67 @@ export default function Home() {
                 <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Meet the Team */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Photo collage */}
+            <div className="grid grid-cols-2 gap-3">
+              <img
+                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=500&q=80"
+                alt="CoolHVAC technician servicing an AC unit"
+                className="rounded-2xl w-full h-56 object-cover"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80"
+                alt="CoolHVAC technician at work"
+                className="rounded-2xl w-full h-56 object-cover mt-6"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=500&q=80"
+                alt="Happy homeowner after HVAC service"
+                className="rounded-2xl w-full h-56 object-cover"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=500&q=80"
+                alt="CoolHVAC service team"
+                className="rounded-2xl w-full h-56 object-cover mt-6"
+              />
+            </div>
+
+            {/* Text */}
+            <div>
+              <p className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">Real People, Real Service</p>
+              <h2 className="text-3xl font-black text-navy-900 mb-5">Technicians You Can Trust in Your Home</h2>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                Every CoolHVAC technician is background-checked, NATE-certified, and trained to treat your home with care. We show up on time, explain everything clearly, and never pressure you into services you don&apos;t need.
+              </p>
+              <ul className="space-y-3 mb-8">
+                {[
+                  "Uniformed, photo-ID verified technicians",
+                  "NATE-certified and EPA-licensed",
+                  "Ongoing training on the latest systems",
+                  "Respectful of your home — always clean up after the job",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start space-x-3">
+                    <div className="w-5 h-5 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span className="text-gray-700 text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="/contact" className="inline-flex items-center space-x-2 bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold text-sm transition">
+                <span>Meet Our Team</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>

@@ -89,7 +89,7 @@ export default function Services() {
           </div>
           <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">Our HVAC Services</h1>
           <p className="text-lg text-gray-300 max-w-2xl leading-relaxed">
-            From routine maintenance to emergency repairs and full system installations, TryCool HVAC has you covered across the DC metro area.
+            From routine maintenance to emergency repairs and full system installations, CoolHVAC has you covered across the DC metro area.
           </p>
         </div>
       </section>

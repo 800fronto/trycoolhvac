@@ -42,7 +42,7 @@ export default function Navbar() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
               </svg>
-              <span>Find Your Local TryCool</span>
+              <span>Find Your Local CoolHVAC</span>
             </a>
             <a href="#" className="hover:text-red-400 transition">Reviews</a>
             <a href="#" className="hover:text-red-400 transition">Special Offers</a>
@@ -58,9 +58,8 @@ export default function Navbar() {
           {/* Logo */}
           <a href="/" className="flex items-center space-x-2 group">
             <div className="flex items-center">
-              <span className="text-blue-800 text-2xl font-black tracking-tight group-hover:text-navy-900 transition">TRY</span>
-              <span className="text-red-600 text-2xl font-black tracking-tight">COOL</span>
-              <span className="text-blue-800 text-2xl font-black tracking-tight ml-1 group-hover:text-navy-900 transition">HVAC</span>
+              <span className="text-red-600 text-2xl font-black tracking-tight">Cool</span>
+              <span className="text-blue-800 text-2xl font-black tracking-tight group-hover:text-navy-900 transition">HVAC</span>
             </div>
           </a>
 

@@ -32,9 +32,8 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center mb-4">
-              <span className="text-white text-xl font-black tracking-tight">TRY</span>
-              <span className="text-red-500 text-xl font-black tracking-tight">COOL</span>
-              <span className="text-white text-xl font-black tracking-tight ml-1">HVAC</span>
+              <span className="text-red-500 text-xl font-black tracking-tight">Cool</span>
+              <span className="text-white text-xl font-black tracking-tight">HVAC</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-5">
               Reliable heating and air conditioning services across the Washington DC metro area. Licensed, insured, and committed to your comfort.
@@ -121,7 +120,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} TryCool HVAC. All rights reserved.
+            &copy; {new Date().getFullYear()} CoolHVAC. All rights reserved.
           </p>
           <div className="flex items-center space-x-6 text-sm text-gray-500">
             <a href="#" className="hover:text-gray-300 transition">Privacy Policy</a>

@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
   const loc = locations.find((l) => l.slug === params.slug);
   if (!loc) return {};
 
-  const title = `HVAC Services in ${loc.city}, ${loc.state} | TryCool HVAC`;
+  const title = `HVAC Services in ${loc.city}, ${loc.state} | CoolHVAC`;
   const description = `Professional heating and air conditioning services in ${loc.city}, ${loc.state}. AC repair, furnace repair, and HVAC installation. Call (202) 555-1234 for same-day service in ${loc.county}.`;
 
   return {
@@ -70,7 +70,7 @@ export default function LocationPage({ params }) {
     },
     {
       title: `Heating & Furnace Repair in ${loc.city}`,
-      desc: `Don't get left in the cold. TryCool HVAC provides expert furnace and heat pump repair throughout ${loc.city} and surrounding ${loc.county} areas. Available 24/7 for heating emergencies.`,
+      desc: `Don't get left in the cold. CoolHVAC provides expert furnace and heat pump repair throughout ${loc.city} and surrounding ${loc.county} areas. Available 24/7 for heating emergencies.`,
       features: ["24/7 emergency heating repair", "Furnace and heat pump service", "Carbon monoxide safety checks", "Energy efficiency assessments"],
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
@@ -104,7 +104,7 @@ export default function LocationPage({ params }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "HVACBusiness",
-    name: `TryCool HVAC - ${loc.city}, ${loc.state}`,
+    name: `CoolHVAC - ${loc.city}, ${loc.state}`,
     description: `Professional HVAC services in ${loc.city}, ${loc.state}. AC repair, heating repair, and installation.`,
     url: `https://trycoolhvac.com/locations/${loc.slug}`,
     telephone: "(202) 555-1234",
@@ -249,13 +249,13 @@ export default function LocationPage({ params }) {
         </div>
       </section>
 
-      {/* Why Choose TryCool */}
+      {/* Why Choose CoolHVAC */}
       <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
             <p className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">Why Us</p>
             <h2 className="text-3xl font-black text-navy-900">
-              Why {loc.city} Homeowners Choose TryCool
+              Why {loc.city} Homeowners Choose CoolHVAC
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">

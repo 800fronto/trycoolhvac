@@ -4,7 +4,7 @@ import Footer from "../../components/Footer";
 import QuoteCalculator from "../../components/QuoteCalculator";
 
 export const metadata = {
-  title: "HVAC Quote Calculator | Estimate Your Cost | TryCool HVAC",
+  title: "HVAC Quote Calculator | Estimate Your Cost | CoolHVAC",
   description: "Get an instant HVAC cost estimate for AC repair, heating repair, and system installation in the DC metro area. Free online quote calculator.",
 };
 
@@ -86,7 +86,7 @@ export default function QuotePage() {
               },
               {
                 q: "Is the in-home estimate really free?",
-                a: "Yes! We offer free in-home estimates for all installations and major repairs. A TryCool technician will assess your home, discuss your options, and provide an exact written quote with no obligation."
+                a: "Yes! We offer free in-home estimates for all installations and major repairs. A CoolHVAC technician will assess your home, discuss your options, and provide an exact written quote with no obligation."
               },
               {
                 q: "Do you offer financing for HVAC installations?",
