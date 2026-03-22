@@ -1,8 +1,27 @@
 
+"use client";
+import { useState } from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 export default function Contact() {
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", zip: "", service: "", details: "" });
+  const [status, setStatus] = useState(null); // null | "sending" | "success" | "error"
+
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
+      const data = await res.json();
+      setStatus(data.success ? "success" : "error");
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <div className="bg-white">
       <Navbar />
@@ -52,33 +71,42 @@ export default function Contact() {
                 <p className="text-sm text-gray-500">We will get back to you within 30 minutes</p>
               </div>
             </div>
-            <form className="space-y-4">
+            {status === "success" ? (
+              <div className="text-center py-12">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <h3 className="text-xl font-bold text-navy-900 mb-2">Request Sent!</h3>
+                <p className="text-gray-500 text-sm">We will get back to you within 30 minutes.</p>
+              </div>
+            ) : (
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1">First Name*</label>
-                  <input className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none transition" placeholder="First Name" />
+                  <input required name="firstName" value={form.firstName} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none transition" placeholder="First Name" />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1">Last Name*</label>
-                  <input className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none transition" placeholder="Last Name" />
+                  <input required name="lastName" value={form.lastName} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none transition" placeholder="Last Name" />
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">Email*</label>
-                <input className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none transition" placeholder="email@domain.com" type="email" />
+                <input required name="email" value={form.email} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none transition" placeholder="email@domain.com" type="email" />
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">Phone Number*</label>
-                <input className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none transition" placeholder="202-455-0020" type="tel" />
+                <input required name="phone" value={form.phone} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none transition" placeholder="202-455-0020" type="tel" />
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">ZIP/Postal Code*</label>
-                <input className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none transition" placeholder="ZIP Code" />
+                <input required name="zip" value={form.zip} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none transition" placeholder="ZIP Code" />
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">Service Needed</label>
-                <select className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none text-gray-600 transition">
-                  <option>Select a service...</option>
+                <select name="service" value={form.service} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none text-gray-600 transition">
+                  <option value="">Select a service...</option>
                   <option>AC Repair</option>
                   <option>Heating Repair</option>
                   <option>HVAC Installation</option>
@@ -89,16 +117,18 @@ export default function Contact() {
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">Additional Details</label>
-                <textarea className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none transition" rows="4" placeholder="Tell us about the issue..."></textarea>
+                <textarea name="details" value={form.details} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none transition" rows="4" placeholder="Tell us about the issue..."></textarea>
               </div>
-              <button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white py-3.5 rounded-lg font-bold text-sm transition shadow-sm flex items-center justify-center space-x-2">
+              {status === "error" && <p className="text-red-600 text-sm text-center">Something went wrong. Please call us directly at 202-455-0020.</p>}
+              <button type="submit" disabled={status === "sending"} className="w-full bg-red-600 hover:bg-red-700 disabled:opacity-60 text-white py-3.5 rounded-lg font-bold text-sm transition shadow-sm flex items-center justify-center space-x-2">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/>
                 </svg>
-                <span>Request A Call</span>
+                <span>{status === "sending" ? "Sending..." : "Request A Call"}</span>
               </button>
               <p className="text-xs text-gray-400 text-center">By submitting this form, you agree to be contacted by CoolHVAC regarding your service request.</p>
             </form>
+            )}
           </div>
 
           {/* Contact Info */}
