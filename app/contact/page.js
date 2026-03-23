@@ -5,12 +5,6 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import JsonLd from "../../components/JsonLd";
 
-export const metadata = {
-  title: "Contact CoolHVAC | Schedule HVAC Service in DC Metro",
-  description: "Schedule HVAC service with CoolHVAC. Call 202-455-0020 or fill out our form — we respond within 30 minutes. Serving Washington DC, Maryland, and Northern Virginia.",
-  alternates: { canonical: '/contact' },
-};
-
 export default function Contact() {
   const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", zip: "", service: "", details: "" });
   const [status, setStatus] = useState(null); // null | "sending" | "success" | "error"
