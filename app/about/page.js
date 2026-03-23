@@ -2,8 +2,8 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 export const metadata = {
-  title: "About CoolHVAC | 15+ Years Serving the DC Metro Area",
-  description: "JMO HVAC Service Inc. has provided expert heating and air conditioning services across the DC metro area since 2009. NATE-certified, EPA-licensed, and committed to your comfort.",
+  title: "About CoolHVAC | Minority-Owned HVAC Company Serving DC Since 2009",
+  description: "CoolHVAC (JMO HVAC Service Inc.) is a minority-owned, family-operated HVAC company serving Washington DC, Maryland, and Virginia since 2009. NATE-certified, EPA 608 licensed, and community-rooted.",
   alternates: { canonical: "/about" },
 };
 
@@ -15,8 +15,12 @@ export default function About() {
       <section className="bg-navy-900 text-white py-20 px-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-800/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
         <div className="relative max-w-7xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">About CoolHVAC</h1>
-          <p className="text-lg text-gray-300 max-w-2xl leading-relaxed">Trusted HVAC service across the DC metro area since 2009. Family-owned. Locally operated. Committed to your comfort.</p>
+          <div className="inline-flex items-center bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-5">
+            <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+            <span className="text-sm font-medium text-gray-200">Minority-Owned &amp; Family-Operated</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">Keeping the DMV Comfortable Since 2009</h1>
+          <p className="text-lg text-gray-300 max-w-2xl leading-relaxed">Honest, reliable HVAC service from people who actually care about the work and the folks they&apos;re doing it for.</p>
         </div>
       </section>
 
@@ -46,9 +50,9 @@ export default function About() {
             <p className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">Our Story</p>
             <h2 className="text-3xl font-black text-navy-900 mb-5">Built on Trust, Driven by Service</h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
-              <p>JMO HVAC Service Inc., operating as CoolHVAC, has been providing expert heating and air conditioning services to homeowners and businesses across the Washington DC metro area since 2009.</p>
-              <p>What started as a small, family-operated HVAC business has grown into one of the most trusted names in residential and commercial HVAC service across DC, Maryland, and Northern Virginia. Our growth has been built on a simple promise: reliable service, upfront pricing, and no surprises.</p>
-              <p>Today, our team of NATE-certified and EPA-licensed technicians serves over 163 communities in the DC metro area, providing everything from emergency AC repair to complete system installations.</p>
+              <p>CoolHVAC started the way a lot of good things do — around the family dinner table. Back in 2009, we saw an opportunity to bring something the DC metro area needed more of: honest, reliable HVAC service from people who actually care about the work and the folks they&apos;re doing it for.</p>
+              <p>As a minority-owned, family-operated business, we&apos;ve always taken pride in doing things the right way. No shortcuts, no upsells you don&apos;t need, no disappearing after the job is done. When we show up at your door, you&apos;re not getting a stranger — you&apos;re getting a neighbor who&apos;s going to treat your home or business the way we&apos;d treat our own.</p>
+              <p>Over the past 17 years, we&apos;ve grown from a small residential operation into a full-service HVAC company serving homes, offices, retail spaces, and commercial buildings across DC, Maryland, and Virginia — now covering 163+ communities in the DC metro area.</p>
             </div>
           </div>
           <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
@@ -65,7 +69,7 @@ export default function About() {
                     <svg className="w-3.5 h-3.5 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                   </div>
                   <div>
-                    <p className="font-bold text-navy-900 text-sm">{cred.title}</p>
+                    <p className="font-bold text-sm text-navy-900">{cred.title}</p>
                     <p className="text-gray-500 text-sm">{cred.desc}</p>
                   </div>
                 </div>
