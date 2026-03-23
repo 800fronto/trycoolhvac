@@ -161,8 +161,8 @@ export default function Services() {
           {
             "@type": "BreadcrumbList",
             "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trycoolhvac.vercel.app" },
-              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://trycoolhvac.vercel.app/services" }
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trycoolhvac.com" },
+              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.trycoolhvac.com/services" }
             ]
           },
           {
@@ -221,7 +221,7 @@ export default function Services() {
           <div className="inline-flex items-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-5">
             <span className="text-sm font-medium text-gray-200">All services include our upfront pricing guarantee</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">Our HVAC Services</h1>
+          <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">AC Repair, Heating &amp; HVAC Services in Washington DC</h1>
           <p className="text-lg text-gray-300 max-w-2xl leading-relaxed">
             From routine maintenance to emergency repairs and full system installations, CoolHVAC has you covered across the DC metro area.
           </p>
@@ -327,6 +327,11 @@ export default function Services() {
             </details>
           ))}
         </div>
+      </section>
+
+      {/* Service Areas link */}
+      <section className="max-w-7xl mx-auto px-6 pb-4 text-center">
+        <p className="text-gray-500 text-sm">We serve Washington DC, Maryland, and Northern Virginia. <a href="/locations" className="text-blue-800 font-semibold hover:underline">View all 163+ service areas &rarr;</a></p>
       </section>
 
       {/* CTA */}

@@ -73,7 +73,7 @@ export default function Locations() {
           <div className="inline-flex items-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-5">
             <span className="text-sm font-medium text-gray-200">Serving {locations.length}+ locations across the DMV</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">HVAC Service Areas</h1>
+          <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">HVAC Service Areas — Washington DC, Maryland &amp; Northern Virginia</h1>
           <p className="text-lg text-gray-300 max-w-2xl leading-relaxed">
             CoolHVAC proudly serves <strong className="text-white">{locations.length} locations</strong> across Washington DC, Maryland, and Northern Virginia. Find expert heating and AC services near you.
           </p>

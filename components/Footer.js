@@ -129,6 +129,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} JMO HVAC Service Inc. All rights reserved.
           </p>
           <div className="flex items-center space-x-6 text-sm text-gray-500">
+            <a href="/about" className="hover:text-gray-300 transition">About</a>
             <a href="/privacy-policy" className="hover:text-gray-300 transition">Privacy Policy</a>
             <a href="/terms-of-service" className="hover:text-gray-300 transition">Terms of Service</a>
             <span>Serving Washington DC, Maryland &amp; Northern Virginia</span>
