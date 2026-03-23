@@ -2,9 +2,9 @@
 import "./globals.css";
 
 export const metadata = {
-  metadataBase: new URL('https://trycoolhvac.vercel.app'),
-  title: "CoolHVAC | Heating & AC Services in Washington DC",
-  description: "AC repair, heating repair, and HVAC installation across the DC metro area. 24/7 emergency service. Upfront pricing. Satisfaction guaranteed. Serving DC, Maryland & Northern Virginia.",
+  metadataBase: new URL('https://trycoolhvac.com'),
+  title: "CoolHVAC | AC Repair & HVAC Services Washington DC",
+  description: "CoolHVAC provides 24/7 AC repair, heating repair, and HVAC installation across Washington DC, Maryland, and Northern Virginia. NATE-certified technicians, same-day service, upfront pricing. Call 202-455-0020.",
   openGraph: {
     title: "CoolHVAC | Reliable Heating & AC Services",
     description: "Expert HVAC services across the DC metro area. Same-day service, upfront pricing, 100% satisfaction guarantee.",

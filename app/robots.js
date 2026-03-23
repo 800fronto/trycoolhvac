@@ -5,6 +5,6 @@ export default function robots() {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://trycoolhvac.vercel.app/sitemap.xml",
+    sitemap: "https://trycoolhvac.com/sitemap.xml",
   };
 }

@@ -100,6 +100,13 @@ export default function Footer() {
                 </svg>
                 <a href="mailto:service@trycoolhvac.com" className="hover:text-white transition">service@trycoolhvac.com</a>
               </div>
+              <div className="flex items-start space-x-3">
+                <svg className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+                </svg>
+                <span>4418 MacArthur Blvd. NW<br />Washington, DC 20007</span>
+              </div>
               <div className="flex items-center space-x-3">
                 <svg className="w-4 h-4 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>

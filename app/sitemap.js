@@ -1,7 +1,7 @@
 
 import locations from "../data/locations";
 
-const BASE_URL = "https://trycoolhvac.vercel.app";
+const BASE_URL = "https://trycoolhvac.com";
 
 export default function sitemap() {
   const staticPages = [

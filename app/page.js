@@ -27,15 +27,38 @@ export default function Home() {
           {
             "@type": "HVACBusiness",
             "name": "CoolHVAC",
-            "description": "Expert residential and commercial HVAC services across the DC metro area.",
-            "url": "https://trycoolhvac.vercel.app",
+            "legalName": "JMO HVAC Service Inc.",
+            "description": "CoolHVAC provides 24/7 emergency AC repair, heating repair, and HVAC installation across Washington DC, Maryland, and Northern Virginia. NATE-certified and EPA 608 licensed technicians, serving the DC metro area since 2009 with same-day service, upfront pricing, and a 100% satisfaction guarantee.",
+            "url": "https://trycoolhvac.com",
             "telephone": "202-455-0020",
             "email": "service@trycoolhvac.com",
+            "foundingDate": "2009",
             "priceRange": "$$",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "4418 MacArthur Blvd. NW",
+              "addressLocality": "Washington",
+              "addressRegion": "DC",
+              "postalCode": "20007",
+              "addressCountry": "US"
+            },
+            "hasCredential": [
+              { "@type": "EducationalOccupationalCredential", "name": "NATE Certified" },
+              { "@type": "EducationalOccupationalCredential", "name": "EPA 608 Certified" },
+              { "@type": "EducationalOccupationalCredential", "name": "Licensed HVAC Contractor — Washington DC" },
+              { "@type": "EducationalOccupationalCredential", "name": "Licensed HVAC Contractor — Maryland" },
+              { "@type": "EducationalOccupationalCredential", "name": "Licensed HVAC Contractor — Virginia" }
+            ],
+            "knowsAbout": ["AC Repair", "Heating Repair", "Furnace Repair", "HVAC Installation", "Heat Pump Installation", "AC Maintenance", "HVAC Tune-Up", "Indoor Air Quality", "Emergency HVAC Service"],
             "areaServed": [
-              { "@type": "State", "name": "District of Columbia" },
-              { "@type": "State", "name": "Maryland" },
-              { "@type": "State", "name": "Virginia" }
+              { "@type": "City", "name": "Washington", "containedInPlace": { "@type": "State", "name": "District of Columbia" } },
+              { "@type": "City", "name": "Bethesda", "containedInPlace": { "@type": "State", "name": "Maryland" } },
+              { "@type": "City", "name": "Silver Spring", "containedInPlace": { "@type": "State", "name": "Maryland" } },
+              { "@type": "City", "name": "Rockville", "containedInPlace": { "@type": "State", "name": "Maryland" } },
+              { "@type": "City", "name": "Arlington", "containedInPlace": { "@type": "State", "name": "Virginia" } },
+              { "@type": "City", "name": "Alexandria", "containedInPlace": { "@type": "State", "name": "Virginia" } },
+              { "@type": "City", "name": "Falls Church", "containedInPlace": { "@type": "State", "name": "Virginia" } },
+              { "@type": "City", "name": "Fairfax", "containedInPlace": { "@type": "State", "name": "Virginia" } }
             ],
             "openingHoursSpecification": [
               { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
@@ -45,12 +68,15 @@ export default function Home() {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
               "reviewCount": "500"
-            }
+            },
+            "sameAs": [
+              "https://trycoolhvac.com"
+            ]
           },
           {
             "@type": "BreadcrumbList",
             "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trycoolhvac.vercel.app" }
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trycoolhvac.com" }
             ]
           }
         ]
@@ -79,7 +105,7 @@ export default function Home() {
               </h1>
 
               <p className="text-lg md:text-xl text-gray-300 max-w-xl mb-10 leading-relaxed">
-                Expert residential and commercial HVAC services across the DC metro area. Our certified technicians are available when you need them most.
+                CoolHVAC provides 24/7 emergency AC repair, heating repair, and HVAC installation across Washington DC, Maryland, and Northern Virginia. NATE-certified, EPA 608 licensed, and serving 10,000+ homes since 2009 — same-day service with upfront pricing and a 100% satisfaction guarantee.
               </p>
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-12">
