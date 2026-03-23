@@ -44,8 +44,8 @@ export default function Navbar() {
               </svg>
               <span>Areas We Serve</span>
             </a>
-            <a href="#" className="hover:text-red-400 transition">Reviews</a>
-            <a href="#" className="hover:text-red-400 transition">Special Offers</a>
+            <a href="/reviews" className="hover:text-red-400 transition">Reviews</a>
+            <a href="/quote" className="hover:text-red-400 transition">Special Offers</a>
           </div>
         </div>
       </div>

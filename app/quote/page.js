@@ -2,15 +2,78 @@
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import QuoteCalculator from "../../components/QuoteCalculator";
+import JsonLd from "../../components/JsonLd";
 
 export const metadata = {
   title: "HVAC Quote Calculator | Estimate Your Cost | CoolHVAC",
   description: "Get an instant HVAC cost estimate for AC repair, heating repair, and system installation in the DC metro area. Free online quote calculator.",
+  alternates: { canonical: '/quote' },
+  openGraph: {
+    title: "HVAC Quote Calculator | Estimate Your Cost | CoolHVAC",
+    description: "Get an instant HVAC cost estimate for AC repair, heating repair, and system installation in the DC metro area. Free online quote calculator.",
+  },
 };
 
 export default function QuotePage() {
   return (
     <div className="bg-white">
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How accurate is this HVAC cost estimate?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "This calculator provides a general price range based on typical costs in the Washington DC metro area. Actual pricing depends on specific equipment, complexity, and current promotions. We always provide an exact, written quote before beginning any work."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is the in-home estimate really free?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes! We offer free in-home estimates for all installations and major repairs. A CoolHVAC technician will assess your home, discuss your options, and provide an exact written quote with no obligation."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you offer financing for HVAC installations?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, we offer flexible financing options for qualifying customers. Monthly payments start as low as $89/month for a complete system replacement. Ask about our 0% APR promotional financing."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How long does an HVAC installation take?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Most residential HVAC installations are completed in one day. Complex installations or ductwork modifications may take 2-3 days. We will provide a timeline with your written estimate."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What brands do you install and service?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We are certified to install and service all major HVAC brands including Carrier, Lennox, Trane, Rheem, Goodman, and more. We will recommend the best system for your home and budget."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trycoolhvac.vercel.app" },
+              { "@type": "ListItem", "position": 2, "name": "Quote", "item": "https://trycoolhvac.vercel.app/quote" }
+            ]
+          }
+        ]
+      }} />
       <Navbar />
 
       {/* Hero */}

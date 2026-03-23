@@ -1,6 +1,17 @@
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import JsonLd from "../../components/JsonLd";
+
+export const metadata = {
+  title: "AC Repair, Heating & HVAC Installation Services | CoolHVAC DC",
+  description: "Professional AC repair, furnace repair, HVAC installation, maintenance, and indoor air quality services in the DC metro area. Same-day service. All brands serviced. Call 202-455-0020.",
+  alternates: { canonical: '/services' },
+  openGraph: {
+    title: "AC Repair, Heating & HVAC Installation Services | CoolHVAC DC",
+    description: "Professional AC repair, furnace repair, HVAC installation, maintenance, and indoor air quality services in the DC metro area. Same-day service. All brands serviced. Call 202-455-0020.",
+  },
+};
 
 const services = [
   {
@@ -78,6 +89,129 @@ const brands = ["Carrier", "Lennox", "Trane", "Rheem", "Goodman", "Daikin", "Yor
 export default function Services() {
   return (
     <div className="bg-white">
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Service",
+            "name": "AC Repair",
+            "description": "Expert air conditioning repair for all makes and models. Same-day service across the DC metro area.",
+            "provider": { "@type": "HVACBusiness", "name": "CoolHVAC" },
+            "areaServed": [
+              { "@type": "State", "name": "District of Columbia" },
+              { "@type": "State", "name": "Maryland" },
+              { "@type": "State", "name": "Virginia" }
+            ]
+          },
+          {
+            "@type": "Service",
+            "name": "Heating & Furnace Repair",
+            "description": "Fast, reliable heating and furnace repair services. Available 24/7 for emergency heating issues.",
+            "provider": { "@type": "HVACBusiness", "name": "CoolHVAC" },
+            "areaServed": [
+              { "@type": "State", "name": "District of Columbia" },
+              { "@type": "State", "name": "Maryland" },
+              { "@type": "State", "name": "Virginia" }
+            ]
+          },
+          {
+            "@type": "Service",
+            "name": "HVAC Installation",
+            "description": "High-efficiency heating and cooling system installation tailored to your home. Financing options available.",
+            "provider": { "@type": "HVACBusiness", "name": "CoolHVAC" },
+            "areaServed": [
+              { "@type": "State", "name": "District of Columbia" },
+              { "@type": "State", "name": "Maryland" },
+              { "@type": "State", "name": "Virginia" }
+            ]
+          },
+          {
+            "@type": "Service",
+            "name": "Preventive Maintenance",
+            "description": "Regular HVAC maintenance plans with seasonal tune-ups and priority scheduling to prevent costly breakdowns.",
+            "provider": { "@type": "HVACBusiness", "name": "CoolHVAC" },
+            "areaServed": [
+              { "@type": "State", "name": "District of Columbia" },
+              { "@type": "State", "name": "Maryland" },
+              { "@type": "State", "name": "Virginia" }
+            ]
+          },
+          {
+            "@type": "Service",
+            "name": "Indoor Air Quality",
+            "description": "Air purifiers, humidifiers, and ventilation systems to keep your home healthy and comfortable.",
+            "provider": { "@type": "HVACBusiness", "name": "CoolHVAC" },
+            "areaServed": [
+              { "@type": "State", "name": "District of Columbia" },
+              { "@type": "State", "name": "Maryland" },
+              { "@type": "State", "name": "Virginia" }
+            ]
+          },
+          {
+            "@type": "Service",
+            "name": "Commercial HVAC",
+            "description": "Commercial heating and cooling services for businesses of all sizes, from office buildings to retail spaces.",
+            "provider": { "@type": "HVACBusiness", "name": "CoolHVAC" },
+            "areaServed": [
+              { "@type": "State", "name": "District of Columbia" },
+              { "@type": "State", "name": "Maryland" },
+              { "@type": "State", "name": "Virginia" }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trycoolhvac.vercel.app" },
+              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://trycoolhvac.vercel.app/services" }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How much does AC repair cost in Washington DC?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "AC repair in the DC metro area typically ranges from $150 to $500, depending on the issue. Simple fixes like capacitor replacement or refrigerant recharge are on the lower end, while compressor or motor repairs cost more. CoolHVAC provides upfront pricing before any work begins \u2014 no surprises."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How often should I service my HVAC system?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We recommend servicing your HVAC system twice a year \u2014 once in spring for your cooling system and once in fall for your heating system. Regular maintenance prevents costly breakdowns, extends equipment life, and keeps your system running at peak efficiency."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you offer 24/7 emergency HVAC service?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. CoolHVAC provides 24/7 emergency heating and air conditioning repair across the DC metro area, including Washington DC, Northern Virginia, and Maryland. Call 202-455-0020 for immediate assistance."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What HVAC brands do you install and service?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We install and service all major HVAC brands, including Carrier, Lennox, Trane, Rheem, Goodman, Daikin, York, and Bryant. Our NATE-certified technicians are trained to work on any make or model."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I know if I need to replace my HVAC system?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Consider replacement if your system is over 15 years old, requires frequent repairs, has rising energy bills, heats or cools unevenly, or uses R-22 refrigerant (which is being phased out). CoolHVAC offers free in-home estimates for system replacement."
+                }
+              }
+            ]
+          }
+        ]
+      }} />
       <Navbar />
 
       {/* Hero */}
@@ -165,6 +299,33 @@ export default function Services() {
               </span>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <div className="mb-10">
+          <p className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">Common Questions</p>
+          <h2 className="text-3xl font-black text-navy-900">Frequently Asked Questions</h2>
+        </div>
+        <div className="space-y-4">
+          {[
+            { q: "How much does AC repair cost in Washington DC?", a: "AC repair in the DC metro area typically ranges from $150 to $500, depending on the issue. Simple fixes like capacitor replacement or refrigerant recharge are on the lower end, while compressor or motor repairs cost more. CoolHVAC provides upfront pricing before any work begins — no surprises." },
+            { q: "How often should I service my HVAC system?", a: "We recommend servicing your HVAC system twice a year — once in spring for your cooling system and once in fall for your heating system. Regular maintenance prevents costly breakdowns, extends equipment life, and keeps your system running at peak efficiency." },
+            { q: "Do you offer 24/7 emergency HVAC service?", a: "Yes. CoolHVAC provides 24/7 emergency heating and air conditioning repair across the DC metro area, including Washington DC, Northern Virginia, and Maryland. Call 202-455-0020 for immediate assistance." },
+            { q: "What HVAC brands do you install and service?", a: "We install and service all major HVAC brands, including Carrier, Lennox, Trane, Rheem, Goodman, Daikin, York, and Bryant. Our NATE-certified technicians are trained to work on any make or model." },
+            { q: "How do I know if I need to replace my HVAC system?", a: "Consider replacement if your system is over 15 years old, requires frequent repairs, has rising energy bills, heats or cools unevenly, or uses R-22 refrigerant (which is being phased out). CoolHVAC offers free in-home estimates for system replacement." },
+          ].map((faq, i) => (
+            <details key={i} className="group bg-white border border-gray-200 rounded-xl">
+              <summary className="flex items-center justify-between p-6 cursor-pointer">
+                <h3 className="font-bold text-navy-900 text-lg pr-4">{faq.q}</h3>
+                <svg className="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                </svg>
+              </summary>
+              <div className="px-6 pb-6 text-gray-600 text-sm leading-relaxed">{faq.a}</div>
+            </details>
+          ))}
         </div>
       </section>
 

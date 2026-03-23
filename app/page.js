@@ -1,10 +1,60 @@
 
+import Image from "next/image";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import JsonLd from "../components/JsonLd";
+
+export const metadata = {
+  title: "HVAC Services Washington DC | AC Repair & Heating | CoolHVAC",
+  description: "Expert AC repair, heating repair, and HVAC installation in the DC metro area. 24/7 emergency service, same-day appointments, upfront pricing. Serving DC, Maryland & Northern Virginia. Call 202-455-0020.",
+  openGraph: {
+    title: "HVAC Services Washington DC | AC Repair & Heating | CoolHVAC",
+    description: "Expert AC repair, heating repair, and HVAC installation in the DC metro area. 24/7 emergency service, same-day appointments, upfront pricing. Serving DC, Maryland & Northern Virginia. Call 202-455-0020.",
+  },
+  twitter: {
+    title: "HVAC Services Washington DC | AC Repair & Heating | CoolHVAC",
+    description: "Expert AC repair, heating repair, and HVAC installation in the DC metro area. 24/7 emergency service, same-day appointments, upfront pricing. Serving DC, Maryland & Northern Virginia. Call 202-455-0020.",
+  },
+  alternates: { canonical: '/' },
+};
 
 export default function Home() {
   return (
     <div className="bg-white">
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "HVACBusiness",
+            "name": "CoolHVAC",
+            "description": "Expert residential and commercial HVAC services across the DC metro area.",
+            "url": "https://trycoolhvac.vercel.app",
+            "telephone": "202-455-0020",
+            "email": "service@trycoolhvac.com",
+            "priceRange": "$$",
+            "areaServed": [
+              { "@type": "State", "name": "District of Columbia" },
+              { "@type": "State", "name": "Maryland" },
+              { "@type": "State", "name": "Virginia" }
+            ],
+            "openingHoursSpecification": [
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "16:00" }
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "500"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trycoolhvac.vercel.app" }
+            ]
+          }
+        ]
+      }} />
       <Navbar />
 
       {/* Hero Section — split layout with technician photo */}
@@ -24,7 +74,7 @@ export default function Home() {
               </div>
 
               <h1 className="text-4xl md:text-6xl font-black mb-5 leading-[1.1] tracking-tight">
-                Reliable service —<br />
+                Expert HVAC Service in DC —<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">upfront pricing, no surprises</span>
               </h1>
 
@@ -69,10 +119,13 @@ export default function Home() {
             {/* Right: Technician photo */}
             <div className="hidden md:block relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                <img
+                <Image
                   src="/hero-technician.jpg"
                   alt="CoolHVAC certified technician on the job"
-                  className="w-full h-[480px] object-cover"
+                  width={800}
+                  height={480}
+                  className="w-full h-[300px] md:h-[400px] lg:h-[480px] object-cover"
+                  priority
                 />
                 {/* Overlay badge */}
                 <div className="absolute bottom-4 left-4 bg-white rounded-xl px-4 py-3 shadow-lg flex items-center space-x-3">
@@ -238,10 +291,14 @@ export default function Home() {
 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <img
+                    <Image
                       src={review.avatar}
                       alt={review.name}
+                      width={80}
+                      height={80}
                       className="w-10 h-10 rounded-full object-cover border-2 border-gray-100"
+                      loading="lazy"
+                      unoptimized
                     />
                     <div>
                       <p className="font-bold text-navy-900 text-sm">{review.name}</p>
@@ -327,25 +384,41 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Photo collage */}
             <div className="grid grid-cols-2 gap-3">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=500&q=80"
                 alt="CoolHVAC technician servicing an AC unit"
+                width={500}
+                height={224}
                 className="rounded-2xl w-full h-56 object-cover"
+                loading="lazy"
+                unoptimized
               />
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80"
                 alt="CoolHVAC technician at work"
+                width={500}
+                height={224}
                 className="rounded-2xl w-full h-56 object-cover mt-6"
+                loading="lazy"
+                unoptimized
               />
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=500&q=80"
                 alt="Happy homeowner after HVAC service"
+                width={500}
+                height={224}
                 className="rounded-2xl w-full h-56 object-cover"
+                loading="lazy"
+                unoptimized
               />
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=500&q=80"
                 alt="CoolHVAC service team"
+                width={500}
+                height={224}
                 className="rounded-2xl w-full h-56 object-cover mt-6"
+                loading="lazy"
+                unoptimized
               />
             </div>
 

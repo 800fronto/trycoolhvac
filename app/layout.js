@@ -2,15 +2,16 @@
 import "./globals.css";
 
 export const metadata = {
+  metadataBase: new URL('https://trycoolhvac.vercel.app'),
   title: "CoolHVAC | Heating & AC Services in Washington DC",
   description: "AC repair, heating repair, and HVAC installation across the DC metro area. 24/7 emergency service. Upfront pricing. Satisfaction guaranteed. Serving DC, Maryland & Northern Virginia.",
-  keywords: "HVAC, AC repair, heating repair, air conditioning, furnace repair, DC, Maryland, Virginia, Washington DC",
   openGraph: {
     title: "CoolHVAC | Reliable Heating & AC Services",
     description: "Expert HVAC services across the DC metro area. Same-day service, upfront pricing, 100% satisfaction guarantee.",
     type: "website",
     locale: "en_US",
     siteName: "CoolHVAC",
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",

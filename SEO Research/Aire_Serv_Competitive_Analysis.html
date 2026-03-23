@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competitive Analysis: Aire Serv vs Cool HVAC</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --cool-blue: #2563eb;
+    --cool-dark: #1e293b;
+    --cool-light: #f8fafc;
+    --cool-accent: #06b6d4;
+    --aire-gold: #f5c200;
+    --aire-blue: #407ec9;
+    --red: #ef4444;
+    --green: #22c55e;
+    --orange: #f97316;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-500: #64748b;
+    --gray-700: #334155;
+    --gray-900: #0f172a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--gray-100); color: var(--gray-900); line-height: 1.6; }
+
+  .header { background: linear-gradient(135deg, var(--cool-dark), #0f172a); color: white; padding: 48px 40px; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+  .header .subtitle { font-size: 18px; color: #94a3b8; font-weight: 400; }
+  .header .meta { margin-top: 16px; font-size: 13px; color: #64748b; display: flex; gap: 20px; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
+
+  .section { background: white; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .section h2 { font-size: 22px; font-weight: 700; color: var(--cool-dark); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--gray-200); }
+  .section h3 { font-size: 17px; font-weight: 600; color: var(--gray-700); margin: 20px 0 10px; }
+
+  /* Executive Summary Cards */
+  .exec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .exec-card { background: var(--gray-100); border-radius: 10px; padding: 20px; border-left: 4px solid var(--cool-blue); }
+  .exec-card.threat { border-left-color: var(--red); }
+  .exec-card.opportunity { border-left-color: var(--green); }
+  .exec-card.neutral { border-left-color: var(--orange); }
+  .exec-card .label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); margin-bottom: 4px; }
+  .exec-card .value { font-size: 20px; font-weight: 700; color: var(--cool-dark); }
+  .exec-card .detail { font-size: 13px; color: var(--gray-500); margin-top: 4px; }
+
+  /* Versus Layout */
+  .vs-grid { display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0; align-items: start; }
+  .vs-center { display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; color: var(--gray-300); padding-top: 20px; }
+  .vs-card { padding: 24px; border-radius: 10px; }
+  .vs-card.cool { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #bfdbfe; }
+  .vs-card.aire { background: linear-gradient(135deg, #fefce8, #fef9c3); border: 1px solid #fde68a; }
+  .vs-card .brand { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+  .vs-card.cool .brand { color: var(--cool-blue); }
+  .vs-card.aire .brand { color: #92400e; }
+  .vs-card ul { list-style: none; padding: 0; }
+  .vs-card li { padding: 6px 0; font-size: 14px; color: var(--gray-700); border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .vs-card li:last-child { border-bottom: none; }
+
+  /* Comparison Table */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead th { background: var(--cool-dark); color: white; padding: 12px 16px; text-align: left; font-weight: 600; }
+  thead th:first-child { border-radius: 8px 0 0 0; }
+  thead th:last-child { border-radius: 0 8px 0 0; }
+  tbody td { padding: 12px 16px; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+  tbody tr:hover { background: var(--gray-100); }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+  .badge.advantage { background: #dcfce7; color: #166534; }
+  .badge.disadvantage { background: #fee2e2; color: #991b1b; }
+  .badge.neutral { background: #fef3c7; color: #92400e; }
+  .badge.parity { background: #e2e8f0; color: #475569; }
+
+  /* SWOT Grid */
+  .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .swot-box { border-radius: 10px; padding: 20px; }
+  .swot-box h4 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+  .swot-box ul { list-style: disc; padding-left: 20px; font-size: 14px; }
+  .swot-box li { margin-bottom: 6px; }
+  .swot-s { background: #dcfce7; } .swot-s h4 { color: #166534; }
+  .swot-w { background: #fee2e2; } .swot-w h4 { color: #991b1b; }
+  .swot-o { background: #dbeafe; } .swot-o h4 { color: #1e40af; }
+  .swot-t { background: #fef3c7; } .swot-t h4 { color: #92400e; }
+
+  /* Battlecard */
+  .battlecard { background: var(--cool-dark); color: white; border-radius: 12px; padding: 32px; }
+  .battlecard h2 { color: white; border-bottom-color: #334155; }
+  .battlecard h3 { color: #94a3b8; }
+  .bc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px; }
+  .bc-section { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 16px; }
+  .bc-section h4 { font-size: 14px; font-weight: 600; color: var(--cool-accent); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .bc-section ul { list-style: none; padding: 0; }
+  .bc-section li { padding: 5px 0; font-size: 13px; color: #cbd5e1; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .bc-section li:last-child { border-bottom: none; }
+  .bc-full { grid-column: 1 / -1; }
+
+  .objection-table { width: 100%; }
+  .objection-table td { padding: 10px 12px; font-size: 13px; color: #cbd5e1; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .objection-table td:first-child { color: #fca5a5; font-weight: 500; width: 40%; }
+  .objection-table td:last-child { color: #86efac; }
+
+  /* Charts */
+  .chart-container { max-width: 500px; margin: 20px auto; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .vs-grid { grid-template-columns: 1fr; }
+    .vs-center { padding: 10px 0; }
+    .swot-grid, .bc-grid { grid-template-columns: 1fr; }
+    .header { padding: 32px 20px; }
+    .container { padding: 16px; }
+    .section { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Competitive Analysis: Aire Serv</h1>
+  <div class="subtitle">Positioning, Messaging & Battlecard for Cool HVAC (DMV Market)</div>
+  <div class="meta">
+    <span>Prepared: March 11, 2026</span>
+    <span>Competitor: aireserv.com</span>
+    <span>Market: Washington DC / Maryland / Northern Virginia</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Executive Summary -->
+  <div class="section">
+    <h2>Executive Summary</h2>
+    <div class="exec-grid">
+      <div class="exec-card">
+        <div class="label">Competitor Type</div>
+        <div class="value">National Franchise</div>
+        <div class="detail">Part of Neighborly® network (5,000+ franchises, 30 brands)</div>
+      </div>
+      <div class="exec-card neutral">
+        <div class="label">Estimated Revenue</div>
+        <div class="value">~$160M systemwide</div>
+        <div class="detail">208 franchised units as of Dec 2024</div>
+      </div>
+      <div class="exec-card opportunity">
+        <div class="label">Customer Rating</div>
+        <div class="value">4.8★ avg / 2.6★ Trustpilot</div>
+        <div class="detail">Mixed — internal ratings high, 3rd-party reviews expose pricing complaints</div>
+      </div>
+      <div class="exec-card threat">
+        <div class="label">Threat Level</div>
+        <div class="value">Medium</div>
+        <div class="detail">Strong brand, but franchise model creates inconsistency you can exploit</div>
+      </div>
+    </div>
+    <p style="font-size:15px; color:var(--gray-700);">
+      Aire Serv is a Neighborly® franchise with 200+ locations and strong national brand recognition. Their strengths are 24/7 availability, upfront pricing, and the Neighborly cross-referral network. However, their franchise model means quality varies by location, their cost structure is burdened by franchise fees (5–7% royalties), and their technology stack is conventional. Cool HVAC's AI-first model directly counters their weaknesses: faster response times, genuinely lower costs (no franchise overhead), and a superior customer experience powered by automation.
+    </p>
+  </div>
+
+  <!-- Head-to-Head Comparison -->
+  <div class="section">
+    <h2>Head-to-Head Positioning</h2>
+    <div class="vs-grid">
+      <div class="vs-card cool">
+        <div class="brand">Cool HVAC</div>
+        <ul>
+          <li><strong>Model:</strong> AI-first independent operator</li>
+          <li><strong>Market:</strong> DMV metro (163+ zip codes)</li>
+          <li><strong>Differentiator:</strong> AI agents handle intake, dispatch, quoting, follow-up 24/7</li>
+          <li><strong>Pricing:</strong> Competitive — 5-6pt margin advantage reinvested into pricing or growth</li>
+          <li><strong>Tech:</strong> Autonomous AI agents across all back-office functions</li>
+          <li><strong>Response:</strong> Instant AI response, every call, every time</li>
+          <li><strong>Overhead:</strong> Radically lean — no franchise fees, minimal office staff</li>
+        </ul>
+      </div>
+      <div class="vs-center">VS</div>
+      <div class="vs-card aire">
+        <div class="brand">Aire Serv</div>
+        <ul>
+          <li><strong>Model:</strong> National franchise (Neighborly®)</li>
+          <li><strong>Market:</strong> 208 locations across US, Canada, UK, Saudi Arabia</li>
+          <li><strong>Differentiator:</strong> Brand trust, Neighborly network, upfront pricing guarantee</li>
+          <li><strong>Pricing:</strong> Upfront by-the-job pricing — but perceived as premium/expensive</li>
+          <li><strong>Tech:</strong> Standard franchise tech stack, Neighborly app</li>
+          <li><strong>Response:</strong> 24/7 availability claimed — but after-hours goes to call center</li>
+          <li><strong>Overhead:</strong> 5–7% royalty + marketing fund fees + franchise costs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Comparison Table -->
+  <div class="section">
+    <h2>Dimension-by-Dimension Comparison</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Cool HVAC</th>
+          <th>Aire Serv</th>
+          <th>Edge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Speed to Customer</strong></td>
+          <td>AI answers instantly 24/7 — no voicemail, no hold times</td>
+          <td>24/7 availability via call center; no extra charge for after-hours</td>
+          <td><span class="badge advantage">Cool HVAC</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pricing Transparency</strong></td>
+          <td>Upfront pricing + lower cost structure = more competitive rates</td>
+          <td>Guaranteed upfront pricing (by the job, not by the hour); customers report prices are high</td>
+          <td><span class="badge advantage">Cool HVAC</span></td>
+        </tr>
+        <tr>
+          <td><strong>Brand Recognition</strong></td>
+          <td>New brand (rebrand of 15-yr established company); building local reputation</td>
+          <td>National brand since 1992; Neighborly® halo; Entrepreneur Franchise 500</td>
+          <td><span class="badge disadvantage">Aire Serv</span></td>
+        </tr>
+        <tr>
+          <td><strong>Customer Reviews</strong></td>
+          <td>Inheriting 4.9★ average from acquired company</td>
+          <td>4.8★ internal avg but 2.6★ on Trustpilot; complaints about overcharging</td>
+          <td><span class="badge advantage">Cool HVAC</span></td>
+        </tr>
+        <tr>
+          <td><strong>Service Range</strong></td>
+          <td>Full HVAC: repair, maintenance, installation + planned expansion into duct cleaning, insulation, smart thermostats</td>
+          <td>Full HVAC: tune-ups, maintenance, repair, replacement, IAQ; Advantage Plan membership</td>
+          <td><span class="badge parity">Parity</span></td>
+        </tr>
+        <tr>
+          <td><strong>Technology</strong></td>
+          <td>Purpose-built AI agents: intake, dispatch, quoting, CRM, marketing — all autonomous</td>
+          <td>Standard franchise CRM/dispatch; Neighborly app for bookings</td>
+          <td><span class="badge advantage">Cool HVAC</span></td>
+        </tr>
+        <tr>
+          <td><strong>Cost Structure</strong></td>
+          <td>No franchise fees; AI replaces office staff; 5-6pt EBITDA advantage</td>
+          <td>5–7% royalties + marketing fund + franchise overhead</td>
+          <td><span class="badge advantage">Cool HVAC</span></td>
+        </tr>
+        <tr>
+          <td><strong>Scalability</strong></td>
+          <td>AI scales at near-zero marginal cost; add technicians, not office staff</td>
+          <td>Growth requires new franchise locations, each with full staffing overhead</td>
+          <td><span class="badge advantage">Cool HVAC</span></td>
+        </tr>
+        <tr>
+          <td><strong>Cross-Sell Network</strong></td>
+          <td>Internal upsell via AI lifecycle analysis; no external referral network yet</td>
+          <td>Neighborly network: 12M+ customers, 30 home service brands, built-in referrals</td>
+          <td><span class="badge disadvantage">Aire Serv</span></td>
+        </tr>
+        <tr>
+          <td><strong>Marketing Support</strong></td>
+          <td>AI content engine: automated blog, email, social, review solicitation</td>
+          <td>Franchise marketing playbooks, digital ads, SEO/PPC guidance, co-op marketing fund</td>
+          <td><span class="badge neutral">Situational</span></td>
+        </tr>
+        <tr>
+          <td><strong>Talent & Training</strong></td>
+          <td>Experienced technicians from acquired company; lean management structure</td>
+          <td>Franchise training program; background-checked techs; tech photo ID sent before arrival</td>
+          <td><span class="badge parity">Parity</span></td>
+        </tr>
+        <tr>
+          <td><strong>Membership Programs</strong></td>
+          <td>AI-driven maintenance reminders and lifecycle management (planned)</td>
+          <td>Advantage Plan: 15% discount + priority scheduling</td>
+          <td><span class="badge disadvantage">Aire Serv</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SWOT of Aire Serv -->
+  <div class="section">
+    <h2>Aire Serv SWOT Analysis (from Cool HVAC's Perspective)</h2>
+    <div class="swot-grid">
+      <div class="swot-box swot-s">
+        <h4>Strengths (Respect These)</h4>
+        <ul>
+          <li>National brand recognition since 1992</li>
+          <li>Neighborly® network: 12M+ customer base and 30 cross-referral brands</li>
+          <li>Upfront, by-the-job pricing eliminates hourly billing anxiety</li>
+          <li>24/7 emergency service with no after-hours surcharge</li>
+          <li>Structured franchise training and operational playbooks</li>
+          <li>Entrepreneur Franchise 500 ranking = credibility signal</li>
+          <li>Advantage Plan creates recurring revenue and lock-in</li>
+        </ul>
+      </div>
+      <div class="swot-box swot-w">
+        <h4>Weaknesses (Exploit These)</h4>
+        <ul>
+          <li>2.6★ Trustpilot rating — consistent overcharging complaints</li>
+          <li>Franchise quality varies wildly by location/owner</li>
+          <li>5–7% royalty fees inflate pricing vs. independents</li>
+          <li>Generic franchise tech stack — no AI advantage</li>
+          <li>No response to negative Trustpilot reviews = reputation gap</li>
+          <li>Employee reviews cite poor training and management at some locations</li>
+          <li>Franchise model limits local flexibility and innovation</li>
+        </ul>
+      </div>
+      <div class="swot-box swot-o">
+        <h4>Opportunities (for Cool HVAC)</h4>
+        <ul>
+          <li>Win price-sensitive customers who feel overcharged by Aire Serv</li>
+          <li>Outperform on response time with true AI-instant pickup vs. call center</li>
+          <li>Target Aire Serv's negative review themes in your marketing (speed, pricing, consistency)</li>
+          <li>Build a membership program that matches their Advantage Plan but adds AI-driven value</li>
+          <li>Capture commercial contracts where franchise rigidity limits custom solutions</li>
+          <li>Own local SEO for DMV while they compete nationally</li>
+        </ul>
+      </div>
+      <div class="swot-box swot-t">
+        <h4>Threats (Watch For)</h4>
+        <ul>
+          <li>Neighborly® could invest in AI/tech upgrades across all franchise brands</li>
+          <li>Aire Serv's brand trust may win risk-averse customers regardless of price</li>
+          <li>Their cross-referral network generates leads you cannot match alone</li>
+          <li>Franchise co-op marketing fund gives them outsized ad spend in local markets</li>
+          <li>If a strong local Aire Serv operator exists in DMV, they could be formidable</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Messaging Analysis -->
+  <div class="section">
+    <h2>Messaging & Narrative Analysis</h2>
+    <table>
+      <thead>
+        <tr><th>Element</th><th>Aire Serv</th><th>Cool HVAC Counter-Positioning</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Tagline</strong></td>
+          <td>"HVAC Repair: Heating & AC Repair + Installation"</td>
+          <td>Lead with speed and intelligence: "The fastest, smartest HVAC service in the DMV"</td>
+        </tr>
+        <tr>
+          <td><strong>Core Promise</strong></td>
+          <td>Reliable, upfront pricing, professional technicians</td>
+          <td>Same reliability + AI speed + genuinely lower prices (no franchise markup)</td>
+        </tr>
+        <tr>
+          <td><strong>Villain</strong></td>
+          <td>Surprise charges, unreliable service, hourly billing</td>
+          <td>Slow response times, voicemail runarounds, inflated franchise pricing</td>
+        </tr>
+        <tr>
+          <td><strong>Hero</strong></td>
+          <td>The Aire Serv technician (background-checked, professional)</td>
+          <td>The homeowner — empowered by instant service and fair pricing</td>
+        </tr>
+        <tr>
+          <td><strong>Proof Points</strong></td>
+          <td>30+ years, 200+ locations, Neighborly network, Franchise 500</td>
+          <td>15+ year local track record, 4.9★ reviews, AI-powered 24/7 instant response</td>
+        </tr>
+        <tr>
+          <td><strong>Primary CTA</strong></td>
+          <td>"Request an Appointment" / "Find a Location"</td>
+          <td>"Get a Quote in 60 Seconds" / "Talk to Us Now" (AI answers immediately)</td>
+        </tr>
+        <tr>
+          <td><strong>Tone</strong></td>
+          <td>Professional, corporate, trustworthy (franchise polish)</td>
+          <td>Confident, modern, local-first with tech-forward edge</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Positioning Map -->
+  <div class="section">
+    <h2>Competitive Positioning Map</h2>
+    <div class="chart-container" style="max-width:600px;">
+      <canvas id="positioningChart"></canvas>
+    </div>
+    <p style="font-size:13px; color:var(--gray-500); text-align:center; margin-top:12px;">
+      Cool HVAC occupies a unique quadrant: technology-driven with local focus — a space Aire Serv's franchise model cannot easily reach.
+    </p>
+  </div>
+
+  <!-- Content & SEO Gap Analysis -->
+  <div class="section">
+    <h2>Content & Digital Strategy Gaps</h2>
+    <table>
+      <thead>
+        <tr><th>Channel / Tactic</th><th>Aire Serv</th><th>Cool HVAC Opportunity</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Local SEO</strong></td>
+          <td>National pages + location-specific landing pages; franchise SEO template</td>
+          <td>Hyper-local DMV content: city-specific pages for 163+ zip codes, AI-generated at scale</td>
+        </tr>
+        <tr>
+          <td><strong>Google Business Profile</strong></td>
+          <td>Individual franchise profiles; review volume varies by location</td>
+          <td>AI-driven review solicitation from day 1; target 5★ volume to dominate local pack</td>
+        </tr>
+        <tr>
+          <td><strong>Blog / Content</strong></td>
+          <td>Franchise blog with generic HVAC tips; low publishing frequency</td>
+          <td>AI content engine: weekly posts targeting high-intent local keywords</td>
+        </tr>
+        <tr>
+          <td><strong>Paid Search (PPC)</strong></td>
+          <td>Franchise co-op budget for local service ads</td>
+          <td>AI-optimized bidding on "AC repair near me" + city-specific terms in DMV</td>
+        </tr>
+        <tr>
+          <td><strong>Email Marketing</strong></td>
+          <td>Franchise email templates; Advantage Plan communications</td>
+          <td>AI-managed CRM: automated seasonal reminders, maintenance upsells, referral prompts</td>
+        </tr>
+        <tr>
+          <td><strong>Social Media</strong></td>
+          <td>National brand accounts + some local franchise pages</td>
+          <td>Local-first social: before/after projects, DMV community content, tech-forward branding</td>
+        </tr>
+        <tr>
+          <td><strong>Review Management</strong></td>
+          <td>No responses to negative Trustpilot reviews = vulnerability</td>
+          <td>AI-powered post-service review requests + proactive response to all reviews</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Sales Battlecard -->
+  <div class="section battlecard">
+    <h2>Sales Battlecard: vs. Aire Serv</h2>
+    <p style="color:#94a3b8; font-size:14px; margin-bottom:20px;">Quick reference for when prospects mention Aire Serv or are comparing options.</p>
+
+    <div class="bc-grid">
+      <div class="bc-section">
+        <h4>Their Pitch (What They'll Say)</h4>
+        <ul>
+          <li>"We've been in business for 30+ years with 200+ locations"</li>
+          <li>"Upfront pricing — you know what you'll pay before we start"</li>
+          <li>"Part of the Neighborly® family — a name you can trust"</li>
+          <li>"Background-checked, expertly trained technicians"</li>
+          <li>"24/7 emergency service with no extra charge"</li>
+        </ul>
+      </div>
+      <div class="bc-section">
+        <h4>Our Counter (What We Say)</h4>
+        <ul>
+          <li>"We have 15+ years right here in the DMV — with 4.9★ local reviews"</li>
+          <li>"We also offer upfront pricing — without the franchise markup built in"</li>
+          <li>"We're locally owned, not a franchise — your call reaches us, not a national call center"</li>
+          <li>"Same licensed, experienced technicians — plus AI that gets you booked faster"</li>
+          <li>"Our AI answers instantly, 24/7 — no hold music, no voicemail, no callback wait"</li>
+        </ul>
+      </div>
+      <div class="bc-section">
+        <h4>Their Real Weaknesses</h4>
+        <ul>
+          <li>2.6★ on Trustpilot — overcharging complaints are consistent</li>
+          <li>5–7% franchise royalties baked into every quote</li>
+          <li>Quality depends entirely on local franchise owner</li>
+          <li>No AI or advanced tech — standard industry tools</li>
+          <li>Negative reviews go unanswered publicly</li>
+          <li>Rigid franchise playbook limits local flexibility</li>
+        </ul>
+      </div>
+      <div class="bc-section">
+        <h4>Where They Genuinely Win</h4>
+        <ul>
+          <li>National brand trust reduces perceived risk for cautious buyers</li>
+          <li>Neighborly cross-referral network generates warm leads</li>
+          <li>Advantage Plan (15% discount + priority) creates loyalty</li>
+          <li>Structured operations manual = consistency at best locations</li>
+          <li>Franchise marketing fund = significant ad budget</li>
+        </ul>
+      </div>
+
+      <div class="bc-section bc-full">
+        <h4>Objection Handling</h4>
+        <table class="objection-table">
+          <tr>
+            <td>"Aire Serv is a bigger, more established company."</td>
+            <td>"We understand the comfort of a national name. But when your AC goes out at midnight, what matters is who answers the phone. Our AI responds instantly — Aire Serv routes you to a call center. And our 4.9★ rating from 15 years of local DMV service proves we deliver."</td>
+          </tr>
+          <tr>
+            <td>"Aire Serv already gave me an upfront quote."</td>
+            <td>"Great — we love upfront pricing too. Let us give you a second quote. We don't have franchise royalties built into our pricing, so our rates are often more competitive for the same quality work."</td>
+          </tr>
+          <tr>
+            <td>"I'm already in their Advantage Plan."</td>
+            <td>"That 15% discount is solid. But ask yourself — 15% off of a higher base price might not actually save you money. Let us quote the same job and you can compare actual dollars, not just percentages."</td>
+          </tr>
+          <tr>
+            <td>"They're part of Neighborly — I trust the brand."</td>
+            <td>"Neighborly is a great network. But each Aire Serv location is independently owned — quality varies. We're a single company with one standard of service. Every customer gets our best, every time."</td>
+          </tr>
+          <tr>
+            <td>"They sent me a photo of my tech before arrival."</td>
+            <td>"That's a nice touch. We also send confirmations and updates — and our AI keeps you informed throughout the entire process, from booking to completion to follow-up. No gaps."</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="bc-section">
+        <h4>Landmines to Set (Ask Early)</h4>
+        <ul>
+          <li>"When you call your current HVAC company after hours, do you get a real person or a call center?"</li>
+          <li>"Do you know what percentage of your quote goes to franchise fees vs. actual service?"</li>
+          <li>"How quickly did you get a quote last time you called for service?"</li>
+          <li>"Have you checked their Trustpilot reviews alongside their Google reviews?"</li>
+        </ul>
+      </div>
+      <div class="bc-section">
+        <h4>Landmines to Defuse (They'll Ask)</h4>
+        <ul>
+          <li>"How long have you been in business?" → "15+ years in the DMV under our previous brand. Same team, same quality — now with AI-powered efficiency."</li>
+          <li>"Are you a franchise?" → "No, and that's by design. No royalties, no cookie-cutter playbooks. Just local ownership focused 100% on DMV customers."</li>
+          <li>"What if I need other home services?" → "We focus on doing HVAC exceptionally well. For other needs, we're happy to recommend trusted local partners."</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Strategic Recommendations -->
+  <div class="section">
+    <h2>Strategic Recommendations</h2>
+    <h3>1. Win on Speed (Your #1 Advantage)</h3>
+    <p style="font-size:14px; color:var(--gray-700); margin-bottom:16px;">Aire Serv claims 24/7 availability, but their after-hours calls go to a franchise call center. Your AI answers instantly. Make this tangible in every ad, every landing page, every Google Business post. "We answered in 3 seconds. How long did you wait on hold?"</p>
+
+    <h3>2. Attack the Franchise Tax</h3>
+    <p style="font-size:14px; color:var(--gray-700); margin-bottom:16px;">Aire Serv's 5–7% royalty plus marketing fund fees are baked into every quote. You don't have that overhead. Position this as: "Same quality service, without the franchise markup." Don't trash the brand — just make customers aware that franchise economics affect their bill.</p>
+
+    <h3>3. Own Local SEO Before They Can</h3>
+    <p style="font-size:14px; color:var(--gray-700); margin-bottom:16px;">Aire Serv uses templated location pages. Your AI content engine should produce hyper-local content for DMV cities, neighborhoods, and zip codes at a pace no franchise template can match. Target every "AC repair [city name]" keyword in your service area.</p>
+
+    <h3>4. Build Your Own Loyalty Program</h3>
+    <p style="font-size:14px; color:var(--gray-700); margin-bottom:16px;">Their Advantage Plan (15% discount + priority scheduling) creates stickiness. Launch a comparable program early — but make it smarter with AI-driven seasonal reminders, predictive maintenance alerts, and auto-scheduled tune-ups that reduce customer churn.</p>
+
+    <h3>5. Weaponize Reviews</h3>
+    <p style="font-size:14px; color:var(--gray-700); margin-bottom:16px;">Aire Serv's Trustpilot gap (2.6★) is a persistent vulnerability they aren't managing. Your AI review solicitation should aggressively build your 5★ volume on Google, Yelp, and Trustpilot simultaneously. Volume + velocity + quality = local pack dominance.</p>
+  </div>
+
+</div>
+
+<script>
+// Positioning Map
+const ctx = document.getElementById('positioningChart').getContext('2d');
+new Chart(ctx, {
+  type: 'scatter',
+  data: {
+    datasets: [
+      {
+        label: 'Cool HVAC',
+        data: [{ x: 9, y: 8.5 }],
+        backgroundColor: '#2563eb',
+        borderColor: '#2563eb',
+        pointRadius: 14,
+        pointHoverRadius: 16
+      },
+      {
+        label: 'Aire Serv',
+        data: [{ x: 5, y: 4 }],
+        backgroundColor: '#f5c200',
+        borderColor: '#d4a500',
+        pointRadius: 14,
+        pointHoverRadius: 16
+      },
+      {
+        label: 'Typical Local Independents',
+        data: [{ x: 3, y: 7 }],
+        backgroundColor: '#94a3b8',
+        borderColor: '#94a3b8',
+        pointRadius: 10,
+        pointHoverRadius: 12
+      },
+      {
+        label: 'Large National Brands (Carrier, Trane dealers)',
+        data: [{ x: 6, y: 3 }],
+        backgroundColor: '#64748b',
+        borderColor: '#64748b',
+        pointRadius: 10,
+        pointHoverRadius: 12
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      title: { display: true, text: 'Competitive Positioning Map', font: { size: 16, weight: '700' }, color: '#1e293b' },
+      legend: { position: 'bottom', labels: { usePointStyle: true, padding: 16, font: { size: 12 } } }
+    },
+    scales: {
+      x: {
+        min: 0, max: 10,
+        title: { display: true, text: 'Technology / Innovation →', font: { size: 13, weight: '600' }, color: '#475569' },
+        grid: { color: '#e2e8f0' }
+      },
+      y: {
+        min: 0, max: 10,
+        title: { display: true, text: '← National Scale    |    Local Focus →', font: { size: 13, weight: '600' }, color: '#475569' },
+        grid: { color: '#e2e8f0' }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
